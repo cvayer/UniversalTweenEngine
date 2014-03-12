@@ -12,7 +12,7 @@ namespace Path
 	//--------------------------------------------------------------------------------------
 
 
-	float LinearPath::Compute(float _t, const float* _Points, const int& _PointsCount)
+	float LinearPath::Compute(float _t, const float* _Points, const int& _PointsCount) const
 	{
 		int segment = GetSegment(_t, _PointsCount);
 		return _Points[segment] + _t * (_Points[segment+1] - _Points[segment]);

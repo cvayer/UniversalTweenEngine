@@ -12,7 +12,7 @@ namespace Path
 	//--------------------------------------------------------------------------------------
 
 
-	float CatmullRomPath::Compute(float _t, const float* _Points, const int& _PointsCount)
+	float CatmullRomPath::Compute(float _t, const float* _Points, const int& _PointsCount) const
 	{
 		int segment = GetSegment(_t, _PointsCount);
 
@@ -28,7 +28,7 @@ namespace Path
 	}
 
 	//--------------------------------------------------------------------------------------
-	float  CatmullRomPath::GetSplineValue(float _a, float _b, float _c, float _d, float _t)
+	float  CatmullRomPath::GetSplineValue(float _a, float _b, float _c, float _d, float _t) const
 	{
 		float t1 = (_c - _a) * 0.5f;
 		float t2 = (_d - _b) * 0.5f;

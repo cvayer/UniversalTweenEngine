@@ -39,7 +39,9 @@ float CircOut::Compute(float _t, float _d)  const
 float CircInOut::Compute(float _t, float _b, float _c, float _d)  const
 {
 	if ((_t/=_d/2) < 1)
+	{
 		return -_c/2 * ((float)sqrt(1 - _t*_t) - 1) + _b;
+	}
 
     return _c/2 * ((float)sqrt(1 - (_t-=2)*_t) + 1) + _b;
 }
@@ -48,7 +50,9 @@ float CircInOut::Compute(float _t, float _b, float _c, float _d)  const
 float CircInOut::Compute(float _t, float _d)  const
 {
 	if ((_t/=_d/2) < 1)
+	{
 		return -0.5f * ((float)sqrt(1 - _t*_t) - 1);
+	}
 
 	return 0.5f * ((float)sqrt(1 - (_t-=2)*_t) + 1);
 }

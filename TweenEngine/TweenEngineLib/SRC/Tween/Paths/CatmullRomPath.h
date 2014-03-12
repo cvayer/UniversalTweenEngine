@@ -15,10 +15,10 @@ namespace Path
 	class CatmullRomPath : public Path
 	{
 	public : 
-		virtual float Compute(float _t, const float* _Points, const int& _PointsCount);
+		virtual float Compute(float _t, const float* _Points, const int& _PointsCount) const;
 
 	private : 
-		float GetSplineValue(float _a, float _b, float _c, float _d, float _t);
+		float GetSplineValue(float _a, float _b, float _c, float _d, float _t) const;
 	};
 
 }// Namespace Path

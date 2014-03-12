@@ -23,10 +23,10 @@ namespace Path
 		 * @param _PointsCount The number of valid points in the array.
 		 * @return The next value of the interpolation.
 		 */
-		virtual float Compute(float _t, const float* _Points, const int& _PointsCount) = 0;
+		virtual float Compute(float _t, const float* _Points, const int& _PointsCount) const = 0;
 
 	protected : 
-		int		GetSegment(float & _t, const int& _PointsCount);
+		int		GetSegment(float & _t, const int& _PointsCount) const;
 
 	};
 }// Namespace Path

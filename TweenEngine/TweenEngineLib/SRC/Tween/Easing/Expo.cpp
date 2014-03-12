@@ -39,11 +39,20 @@ float ExpoOut::Compute(float _t, float _d)  const
 float ExpoInOut::Compute(float _t, float _b, float _c, float _d)  const
 {
 	if (_t == 0) 
+	{
 		return _b;
+	}
+
 	if (_t == _d) 
+	{
 		return _b + _c;
+	}
+
 	if ((_t /= _d/2.0f) < 1.0f) 
+	{
 		return _c/2.0f * pow(2.0f, 10.0f * (_t - 1.0f)) + _b;
+	}
+
 	return _c/2.0f * (-pow(2.0f, -10.0f * --_t) + 2.0f) + _b;
 }
 
@@ -51,11 +60,20 @@ float ExpoInOut::Compute(float _t, float _b, float _c, float _d)  const
 float ExpoInOut::Compute(float _t, float _d)  const
 {
 	if (_t == 0) 
+	{
 		return 0.0f;
+	}
+
 	if (_t == _d) 
+	{
 		return 1.0f;
+	}
+
 	if ((_t /= _d/2.0f) < 1.0f) 
+	{
 		return 0.5f * pow(2.0f, 10.0f * (_t - 1.0f));
+	}
+
 	return 0.5f * (-pow(2.0f, -10.0f * --_t) + 2.0f);
 }
 

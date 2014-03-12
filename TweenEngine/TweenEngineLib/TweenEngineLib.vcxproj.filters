@@ -66,12 +66,6 @@
     <ClCompile Include="SRC\Tween\Tween.cpp">
       <Filter>Source Files\Tween\Tween</Filter>
     </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Back.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Bounce.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
     <ClCompile Include="SRC\Tween\Easing\Circ.cpp">
       <Filter>Source Files\Easing\Derivated</Filter>
     </ClCompile>
@@ -107,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp">
       <Filter>Source Files\Paths\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Easing.cpp">
+      <Filter>Source Files\Easing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,39 +142,6 @@
     </ClInclude>
     <ClInclude Include="SRC\Tween\Easing\Easings.h">
       <Filter>Source Files\Easing</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Sine.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Back.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Bounce.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Circ.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Cubic.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Elastic.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Expo.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Linear.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Quad.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Quart.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Quint.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
     </ClInclude>
     <ClInclude Include="SRC\Tween\Easing\Easing.h">
       <Filter>Source Files\Easing</Filter>

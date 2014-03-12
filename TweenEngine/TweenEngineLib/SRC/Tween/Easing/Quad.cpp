@@ -37,7 +37,10 @@ float QuadOut::Compute(float _t, float _d)  const
 float QuadInOut::Compute(float _t, float _b, float _c, float _d)  const
 {
 	if ((_t /= _d/2.0f) < 1) 
+	{
 		return _c/2.0f*_t*_t + _b;
+	}
+
 	return -_c/2.0f * ((--_t)*(_t-2.0f) - 1.0f) + _b;
 }
 
@@ -45,7 +48,10 @@ float QuadInOut::Compute(float _t, float _b, float _c, float _d)  const
 float QuadInOut::Compute(float _t, float _d)  const
 {
 	if ((_t /= _d/2.0f) < 1.0f) 
+	{
 		return 0.5f*_t*_t;
+	}
+
 	return -0.5f * ((--_t)*(_t-2.0f) - 1.0f);
 }
 

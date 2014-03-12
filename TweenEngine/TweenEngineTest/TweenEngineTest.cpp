@@ -99,21 +99,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Tween::Tween::Call(&listener);
 
-	/*cPool<cQuad> quadPool;
-
-	for(int i = 0; i < 50000; i++)
-	{
-		Tween::To(quadPool.Get(), cQuad::eTweenColor, 1.0f)->Ease(&(Easing::QUAD_INOUT))->Target(0.0f, 0.0f, 0.0f)->Repeat(-1, 0.0f)->Start(&manager);
-	}
-
-	static LARGE_INTEGER frequency;
-	QueryPerformanceFrequency(&frequency);
-	QueryPerformanceFrequency(&frequency);
-	QueryPerformanceFrequency(&frequency);
-	
-	
-	*/
-
 	float fGroup0DtFactor = 1.0f;
 	float fGroup1DtFactor = 1.0f;
 
@@ -125,8 +110,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Main loop
 	while( running )
 	{
-		//sleep((uint32)fDt*1000*10);
-
 		fDt = (float) (glfwGetTime() - time );
 		fDt *= fDTFactor;
 		time = glfwGetTime();

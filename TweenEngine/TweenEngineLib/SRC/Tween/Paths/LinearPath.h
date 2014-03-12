@@ -16,7 +16,7 @@ namespace Path
 	class LinearPath : public Path
 	{
 	public : 
-		virtual float Compute(float t, const float* _Points, const int& _PointsCount);
+		virtual float Compute(float t, const float* _Points, const int& _PointsCount) const;
 	};
 
 }// Namespace Path

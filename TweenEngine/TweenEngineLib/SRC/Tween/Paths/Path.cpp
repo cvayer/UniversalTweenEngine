@@ -10,7 +10,7 @@ namespace Path
 	// Path
 	//--------------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------------
-	int	Path::GetSegment(float & _t, const int& _PointsCount)
+	int	Path::GetSegment(float & _t, const int& _PointsCount) const
 	{
 		int segment = (int) floor((_PointsCount-1) * _t);
 		segment = (segment > 0) ? segment : 0;

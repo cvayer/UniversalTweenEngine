@@ -15,7 +15,7 @@ namespace Tween
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-Easing::Easing*		Tween::s_pDefaultEasing = &(Easing::QUAD_INOUT);
+const Easing::Easing*		Tween::s_pDefaultEasing = &(Easing::LINEAR);
 
 Pool<Tween>	Tween::s_Pool = Pool<Tween>();
 
@@ -155,7 +155,7 @@ Tween* Tween::SetIsFrom(bool _bIsFrom)
 }
 
 //--------------------------------------------------------------------------------
-Tween* Tween::Ease(Easing::Easing* _pEquation)
+Tween* Tween::Ease(const Easing::Easing* _pEquation)
 {
 	TWEEN_ASSERT(_pEquation, "Equation is null");
 	m_pEasing = _pEquation;
@@ -163,7 +163,7 @@ Tween* Tween::Ease(Easing::Easing* _pEquation)
 }
 
 //--------------------------------------------------------------------------------
-Tween* Tween::SetPath(Path::Path* _pPath)
+Tween* Tween::SetPath(const Path::Path* _pPath)
 {
 	TWEEN_ASSERT(_pPath, "Path is null");
 	m_pPath = _pPath;
