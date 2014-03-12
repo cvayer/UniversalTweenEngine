@@ -1,6 +1,9 @@
 #ifndef __TWEENTYPEDEFS__H__
 #define __TWEENTYPEDEFS__H__
 
+namespace Tween
+{
+
 // Base Types
 typedef signed char             int8;             
 typedef unsigned char           uint8;  
@@ -10,6 +13,9 @@ typedef signed long int         int32;
 typedef unsigned long int       uint32;  
 typedef signed long long int    int64; 
 typedef unsigned long long int  uint64; 
+
+static const int Infinity = -1;
+static const int InvalidType = -1;
 
 #ifdef DEBUG
 #define TWEEN_ASSERT(COND, ...)   if (!(COND)){\
@@ -21,5 +27,6 @@ typedef unsigned long long int  uint64;
 #else
 #define TWEEN_ASSERT(COND, ...)	
 #endif
+} // Namespace Tween
 
 #endif

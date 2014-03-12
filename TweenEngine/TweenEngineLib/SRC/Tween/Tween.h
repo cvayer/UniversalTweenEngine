@@ -31,26 +31,13 @@ class Tween : public TemplatedTween<Tween>
 	friend class Pool<Tween>;
 
 protected : 
-	static const	int				INVALID_TYPE = -1;
-	static			uint8			s_AttributesLimit;
-	static			uint8			s_WaypointsLimit;
 	static			Pool<Tween>		s_Pool;
-	static			Easing::Easing* s_pDefaultEquation;
+	static			Easing::Easing* s_pDefaultEasing;
 
 public : 
-	static	void		SetAttributesLimit(uint8 _Limit)
+	static	void		SetDefaultEasing(Easing::Easing* _pDefaultEasing)
 	{
-		s_AttributesLimit = _Limit;
-	}
-
-	static	void		SetWaypointsLimit(uint8 _Limit)
-	{
-		s_WaypointsLimit = _Limit;
-	}
-
-	static	void		SetDefaultEquation(Easing::Easing* _pDefaultEquation)
-	{
-		s_pDefaultEquation = _pDefaultEquation;
+		s_pDefaultEasing = _pDefaultEasing;
 	}
 
 	static Tween* To(ITweenable* _pTarget, int _iType, float _fDuration);
@@ -65,7 +52,7 @@ public :
 
 	inline	int					GetType()		const		{ return m_iType; }
 	inline	ITweenable*			GetTweenable()	const		{ return m_pTarget; }
-	inline	Easing::Easing*		GetEasing()		const		{ return m_pEquation; }
+	inline	Easing::Easing*		GetEasing()		const		{ return m_pEasing; }
 
 			Tween*		Ease(Easing::Easing* _pEquation);
 			Tween*		SetPath(Path::Path* _pPath);
@@ -103,7 +90,7 @@ private :
 
 	int					m_iType;		// TODO : typedef type
 	ITweenable*			m_pTarget;
-	Easing::Easing*		m_pEquation;		
+	Easing::Easing*		m_pEasing;		
 	Path::Path*			m_pPath;
 
 	std::vector<float>	m_fStartValues;
@@ -112,8 +99,6 @@ private :
 	std::vector<float>	m_fAttributesBuffer;
 	std::vector<float>	m_fWaypointsBuffer;
 
-	uint8				m_ucAttributesLimit;
-	uint8				m_ucWaypointsLimit;
 	uint8				m_ucCombinedAttributesCount;
 	uint8				m_ucWaypointsCount;
 	bool				m_bIsFrom;

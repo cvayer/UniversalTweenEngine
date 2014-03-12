@@ -2,12 +2,13 @@
 #define __BASETWEEN__H__
 
 #include "ITweenListener.h"
-#include ".\Tools\BitField.h"
+#include "Tools\BitField.h"
 
 namespace Tween
 {
 class ITweenable;
 class Manager;
+
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 // BaseTween

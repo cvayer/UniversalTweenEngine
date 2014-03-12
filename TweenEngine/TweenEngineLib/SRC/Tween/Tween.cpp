@@ -15,9 +15,7 @@ namespace Tween
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-uint8				Tween::s_AttributesLimit	= 4;
-uint8				Tween::s_WaypointsLimit	= 0;
-Easing::Easing*		Tween::s_pDefaultEquation = &(Easing::QUAD_INOUT);
+Easing::Easing*		Tween::s_pDefaultEasing = &(Easing::QUAD_INOUT);
 
 Pool<Tween>	Tween::s_Pool = Pool<Tween>();
 
@@ -36,16 +34,14 @@ void Pool<Tween>::_OnUnPool(Tween* _pObject)
 //--------------------------------------------------------------------------------
 Tween::Tween()
 : TemplatedTween<Tween>()
-, m_iType(INVALID_TYPE)
-, m_pEquation(NULL)
+, m_iType(InvalidType)
+, m_pEasing(NULL)
 , m_pPath(NULL)
 , m_bIsFrom(false)
 , m_bIsRelative(false)
 , m_ucCombinedAttributesCount(0)
 , m_ucWaypointsCount(0)
 , m_pTarget(NULL)
-, m_ucAttributesLimit(s_AttributesLimit)
-, m_ucWaypointsLimit(s_WaypointsLimit)
 {
 	
 }
@@ -60,8 +56,8 @@ void Tween::_Reset()
 {
 	TemplatedTween<Tween>::_Reset();
 
-	m_iType = INVALID_TYPE;
-	m_pEquation = NULL;
+	m_iType = InvalidType;
+	m_pEasing = NULL;
 	m_pPath = NULL;
 	m_pTarget = NULL;
 	m_bIsFrom = false;
@@ -87,7 +83,13 @@ Tween* Tween::Setup(ITweenable* _pTarget, int _iType, float _fDuration)
 		m_fDuration	= _fDuration;
 
 		if(m_pTarget)
+        {
 			m_ucCombinedAttributesCount = m_pTarget->_GetValuesCount(_iType);
+        }
+        else
+        {
+            m_ucCombinedAttributesCount = 0;
+        }
 	}
 	return this;
 }
@@ -98,7 +100,7 @@ Tween* Tween::To(ITweenable* _pTarget, int _iType, float _fDuration)
 	Tween* pTween = s_Pool.Get();
 	if(pTween)
 	{
-		pTween->Setup(_pTarget, _iType, _fDuration)->Ease(s_pDefaultEquation);
+		pTween->Setup(_pTarget, _iType, _fDuration)->Ease(s_pDefaultEasing);
 	}
 	return pTween;
 }
@@ -118,7 +120,7 @@ Tween* Tween::Set(ITweenable* _pTarget, int _iType)
 	Tween* pTween = s_Pool.Get();
 	if(pTween)
 	{
-		pTween->Setup(_pTarget, _iType, 0.0f)->Ease(s_pDefaultEquation);
+		pTween->Setup(_pTarget, _iType, 0.0f)->Ease(s_pDefaultEasing);
 	}
 	return pTween;
 }
@@ -129,7 +131,7 @@ Tween* Tween::Call(ITweenListener* _pCallBack)
 	Tween* pTween = s_Pool.Get();
 	if(pTween)
 	{
-		pTween->Setup(NULL, INVALID_TYPE, 0.0f)->SetListener(_pCallBack, -1, ITweenListener::eStart);
+		pTween->Setup(NULL, InvalidType, 0.0f)->SetListener(_pCallBack, -1, ITweenListener::eStart);
 	}
 	return pTween;
 }
@@ -140,7 +142,7 @@ Tween* Tween::Mark()
 	Tween* pTween = s_Pool.Get();
 	if(pTween)
 	{
-		pTween->Setup(NULL, INVALID_TYPE, 0.0f);
+		pTween->Setup(NULL, InvalidType, 0.0f);
 	}
 	return pTween;
 }
@@ -156,7 +158,7 @@ Tween* Tween::SetIsFrom(bool _bIsFrom)
 Tween* Tween::Ease(Easing::Easing* _pEquation)
 {
 	TWEEN_ASSERT(_pEquation, "Equation is null");
-	m_pEquation = _pEquation;
+	m_pEasing = _pEquation;
 	return this;
 }
 
@@ -201,7 +203,9 @@ Tween* Tween::Target(const float* _fTargets, int _iTargetCount, bool _bRelative 
 	if(!_bRelative)
 	{   
 		for(int i=0; i < _iTargetCount; i++)
+        {
 			m_fTargetValues.push_back(_fTargets[i] );
+        }
 	}
 	else
 	{
@@ -239,7 +243,9 @@ Tween* Tween::Waypoint(float _fTarget1, float _fTarget2, float _fTarget3)
 Tween* Tween::Waypoint(const float* _fTargets, int _iTargetCount)
 {
 	for(int i=0; i < _iTargetCount; i++)
+    {
 		m_fWaypoints.push_back(_fTargets[i] );
+    }
 
 	++m_ucWaypointsCount;
 	return this;
@@ -290,10 +296,10 @@ void Tween::_InnerInitialize()
 //--------------------------------------------------------------------------------
 void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)
 {
-	if(!m_pTarget || !m_pEquation)
+	if(!m_pTarget || !m_pEasing)
 	{
 		TWEEN_ASSERT(m_pTarget, "No Tweenable assigned");
-		TWEEN_ASSERT(m_pEquation, "No Equation assigned");
+		TWEEN_ASSERT(m_pEasing, "No Easing assigned");
 		return;
 	}
 
@@ -329,11 +335,11 @@ void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, f
 
 	float fTime = _bIsReverse(_iStep)? m_fDuration - fGetCurrentTime() : fGetCurrentTime();
 
-	float t = m_pEquation->Compute(fTime, m_fDuration);
+	float t = m_pEasing->Compute(fTime, m_fDuration);
 
 	if(m_ucWaypointsCount == 0 || m_pPath == NULL)
 	{
-		for(int i = 0; i < m_ucCombinedAttributesCount; ++i)
+		for(uint8 i = 0; i < m_ucCombinedAttributesCount; ++i)
 		{
 			m_fAttributesBuffer[i] = m_fStartValues[i] + t * (m_fTargetValues[i] - m_fStartValues[i]);
 		}

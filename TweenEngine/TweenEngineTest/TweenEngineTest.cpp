@@ -54,11 +54,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	cMyTweenListener listener;
 
 
-	tweenX.Setup(&X, -1, 2.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(-0.8f)->Repeat(-1, 0.5f, true)->Start(&manager);
+	tweenX.Setup(&X, Tween::InvalidType , 2.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(-0.8f)->Repeat(Tween::Infinity, 0.5f, true)->Start(&manager);
 
-	tweenY.Setup(&Y, -1, 0.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(0.5f)->Start(&manager);
+	tweenY.Setup(&Y, Tween::InvalidType, 0.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(0.5f)->Start(&manager);
 
-	tweenRotation.Setup(&Rotation, -1, 1.5f)->Ease(&(Tween::Easing::CUBIC_INOUT))->Target(360.0f)->Delay(0.5f)->Repeat(-1, 0.5f, true)->SetListener(&listener, 1, Tween::ITweenListener::eAll)->Start();
+	tweenRotation.Setup(&Rotation, Tween::InvalidType, 1.5f)->Ease(&(Tween::Easing::CUBIC_INOUT))->Target(360.0f)->Delay(0.5f)->Repeat(Tween::Infinity, 0.5f, true)->SetListener(&listener, 1, Tween::ITweenListener::eAll)->Start();
 
 
 	cQuad quad1;
@@ -71,8 +71,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	quad2.m_fX = quad2.m_fY = 0.5f;
 	quad3.m_fX = quad3.m_fY = -0.5f;
-
-	Tween::Tween::SetWaypointsLimit(3);
 
 	Tween::Tween tweenQuad1Position;
 	tweenQuad1Position.Setup(&quad1, cQuad::eTweenPosition, 2.0f);
