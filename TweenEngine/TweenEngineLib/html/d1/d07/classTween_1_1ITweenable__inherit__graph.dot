@@ -1,0 +1,9 @@
+digraph "Tween::ITweenable"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Tween::ITweenable\n||+ ~ITweenable()\l# _GetValues()\l# _SetValues()\l# _GetValuesCount()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
+  Node2 [label="{Tween::TweenableValue\< T \>\n|# m_Val\l|+ TweenableValue()\l+ TweenableValue()\l+ TweenableValue()\l+ ~TweenableValue()\l+ operator=()\l+ operator=()\l+ operator T()\l# _GetValues()\l# _SetValues()\l# _GetValuesCount()\l}",height=0.2,width=0.4,color="black",URL="$d4/d02/classTween_1_1TweenableValue.html"];
+}

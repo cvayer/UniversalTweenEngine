@@ -1,0 +1,12 @@
+digraph "Tween::BaseTween::_bIsReverse"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Tween::BaseTween::\l_bIsReverse",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="Tween::BaseTween::bIsYoyo",height=0.2,width=0.4,color="black",URL="$dc/d9e/classTween_1_1BaseTween.html#aee5ba7023663297feda12de3ef5723fb"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="Tween::BitField::bTestMask",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html#ae337c0285a888d03cbcd7c8cc8f99e24"];
+}

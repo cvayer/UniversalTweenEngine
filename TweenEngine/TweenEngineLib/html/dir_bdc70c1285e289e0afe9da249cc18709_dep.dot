@@ -1,0 +1,10 @@
+digraph "SRC/Paths" {
+  bgcolor=transparent;
+  compound=true
+  node [ fontsize="10", fontname="FreeSans"];
+  edge [ labelfontsize="10", labelfontname="FreeSans"];
+  subgraph clusterdir_1e771ff450ae847412a8c28572c155bb {
+    graph [ bgcolor="#ddddee", pencolor="black", label="SRC" fontname="FreeSans", fontsize="10", URL="dir_1e771ff450ae847412a8c28572c155bb.html"]
+  dir_bdc70c1285e289e0afe9da249cc18709 [shape=box, label="Paths", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_bdc70c1285e289e0afe9da249cc18709.html"];
+  }
+}

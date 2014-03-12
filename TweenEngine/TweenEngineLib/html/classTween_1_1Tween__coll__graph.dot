@@ -1,0 +1,28 @@
+digraph "Tween::Tween"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Tween::Tween\n|# INVALID_TYPE\l# s_AttributesLimit\l# s_WaypointsLimit\l# s_Pool\l# s_pDefaultEquation\l- m_iType\l- m_pEquation\l- m_fStartValues\l- m_fTargetValues\l- m_fWaypoints\l- m_fAttributesBuffer\l- m_fWaypointsBuffer\l- m_ucAttributesLimit\l- m_ucWaypointsLimit\l- m_ucCombinedAttributesCount\l- m_ucWaypointsCount\l- m_bIsFrom\l- m_bIsRelative\l|+ Tween()\l+ ~Tween()\l+ GetType()\l+ GetTweenable()\l+ GetEasing()\l+ Ease()\l+ SetPath()\l+ Target()\l+ Target()\l+ Target()\land 8 more...\l+ SetAttributesLimit()\l+ SetWaypointsLimit()\l+ SetDefaultEquation()\l+ To()\l+ From()\l+ Set()\l+ Call()\l+ Mark()\l# _Reset()\l# _Build()\l# _InnerInitialize()\l# _InnerUpdate()\l# _ForceStartValues()\l# _ForceEndValues()\l# _bContainsTarget()\l# _bContainsTarget()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
+  Node2 [label="{Tween::TemplatedTween\l\< Tween \>\n||+ TemplatedTween()\l+ ~TemplatedTween()\l+ Build()\l+ Start()\l+ Start()\l+ Start()\l+ Delay()\l+ Repeat()\l+ SetListener()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1TemplatedTween.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
+  Node3 [label="{Tween::BaseTween\n|# m_fDelay\l# m_fDuration\l- m_iListenerTriggers\l- m_iListenerID\l- m_iStep\l- m_iRepeatCount\l- m_fRepeatDelay\l- m_fCurrentTime\l- m_fDt\l|+ BaseTween()\l+ ~BaseTween()\l+ fGetDelay()\l+ fGetDuration()\l+ fGetFullDuration()\l+ fGetRepeatDelay()\l+ fGetCurrentTime()\l+ iGetRepeatCount()\l+ bIsStarted()\l+ bIsInit()\land 8 more...\l# _ForceStartValues()\l# _ForceEndValues()\l# _bContainsTarget()\l# _bContainsTarget()\l# _KillTarget()\l# _KillTarget()\l# _Reset()\l# _bIsReverse()\l# _ForceToStart()\l# _ForceToEnd()\land 10 more...\l- _bIsKilled()\l- _bIsIterationStep()\l- _Initialize()\l- _UpdateRelaunch()\l- _UpdateStep()\l- _UpdateCompletion()\l- _bIsValid()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1BaseTween.html"];
+  Node4 -> Node3 [color="grey25",fontsize="10",style="solid",label=" m_pListener" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node4 [label="{Tween::ITweenListener\n||+ ~ITweenListener()\l+ OnEvent()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1ITweenListener.html"];
+  Node5 -> Node3 [color="grey25",fontsize="10",style="solid",label=" m_Flags" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node5 [label="{Tween::BitField\< uint8 \>\n|- m_Mask\l|+ BitField()\l+ BitField()\l+ bTestMask()\l+ bTestMask()\l+ bTestMaskAny()\l+ AddMask()\l+ SubMask()\l+ Reset()\l+ GetMask()\l+ Mask()\land 7 more...\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1BitField.html"];
+  Node6 -> Node5 [dir="back",color="orange",fontsize="10",style="solid",label=" \< uint8 \>" ,fontname="FreeSans"];
+  Node6 [label="{Tween::BitField\< _Mask \>\n||+ BitField()\l+ BitField()\l+ bTestMask()\l+ bTestMaskAny()\l+ bTestMask()\l+ AddMask()\l+ SubMask()\l+ Reset()\l+ GetMask()\l+ Mask()\land 7 more...\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1BitField.html"];
+  Node7 -> Node6 [color="grey25",fontsize="10",style="solid",label=" m_Mask" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node7 [label="{_Mask\n||}",height=0.2,width=0.4,color="grey75"];
+  Node8 -> Node2 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Tween \>" ,fontname="FreeSans"];
+  Node8 [label="{Tween::TemplatedTween\< T \>\n||+ TemplatedTween()\l+ ~TemplatedTween()\l+ Build()\l+ Start()\l+ Start()\l+ Start()\l+ Delay()\l+ Repeat()\l+ SetListener()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1TemplatedTween.html"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
+  Node9 -> Node1 [color="grey25",fontsize="10",style="solid",label=" m_pPath" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node9 [label="{Tween::Path::Path\n||+ Compute()\l# GetSegment()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1Path_1_1Path.html"];
+  Node10 -> Node1 [color="grey25",fontsize="10",style="solid",label=" m_pEquation\ns_pDefaultEquation" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node10 [label="{Tween::Easing::Easing\n||+ Compute()\l+ Compute()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1Easing_1_1Easing.html",tooltip="Base class for all easing interpolations."];
+  Node11 -> Node1 [color="grey25",fontsize="10",style="solid",label=" m_pTarget" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node11 [label="{Tween::ITweenable\n||+ ~ITweenable()\l# _GetValues()\l# _SetValues()\l# _GetValuesCount()\l}",height=0.2,width=0.4,color="black",URL="$classTween_1_1ITweenable.html"];
+}

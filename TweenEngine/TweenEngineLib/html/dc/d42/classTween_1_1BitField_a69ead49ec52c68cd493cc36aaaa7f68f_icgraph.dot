@@ -1,0 +1,16 @@
+digraph "Tween::BitField::FlagToMask"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Tween::BitField::FlagToMask",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="Tween::BitField\< uint8\l \>::AddFlag",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html#a5c0078bd1b1e068d4ba90047d896f8a7",tooltip="Flag should be a value between 0 and BitCount(_Mask), do not use shifted values."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="Tween::BitField\< uint8\l \>::bTestFlag",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html#a3733f89743cb90dc9c97dd2a885902e4",tooltip="Flag should be a value between 0 and BitCount(_Mask), do not use shifted values."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="Tween::BitField\< uint8\l \>::ChangeFlag",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html#adc798099b1ef24fa2d6b4a6d80cfe09a",tooltip="Flag should be a value between 0 and BitCount(_Mask), do not use shifted values."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="Tween::BitField\< uint8\l \>::SubFlag",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html#a6c1b90dbe45a2f65fe58ad654a8092da",tooltip="Flag should be a value between 0 and BitCount(_Mask), do not use shifted values."];
+}

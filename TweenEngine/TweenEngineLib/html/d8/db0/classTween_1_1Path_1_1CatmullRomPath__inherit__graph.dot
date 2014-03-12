@@ -1,0 +1,9 @@
+digraph "Tween::Path::CatmullRomPath"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Tween::Path::CatmullRomPath\n||+ Compute()\l- GetSplineValue()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
+  Node2 [label="{Tween::Path::Path\n||+ Compute()\l# GetSegment()\l}",height=0.2,width=0.4,color="black",URL="$df/d53/classTween_1_1Path_1_1Path.html"];
+}

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TweenEngineTest", "TweenEngineTest\TweenEngineTest.vcxproj", "{E9925B53-3B66-41F1-B911-E4F7E9C98EBC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TweenEngineLib", "TweenEngineLib\TweenEngineLib.vcxproj", "{53F3A9DC-F3B9-4EE6-A10A-B819497DD9ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9925B53-3B66-41F1-B911-E4F7E9C98EBC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9925B53-3B66-41F1-B911-E4F7E9C98EBC}.Debug|Win32.Build.0 = Debug|Win32
+		{E9925B53-3B66-41F1-B911-E4F7E9C98EBC}.Release|Win32.ActiveCfg = Release|Win32
+		{E9925B53-3B66-41F1-B911-E4F7E9C98EBC}.Release|Win32.Build.0 = Release|Win32
+		{53F3A9DC-F3B9-4EE6-A10A-B819497DD9ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53F3A9DC-F3B9-4EE6-A10A-B819497DD9ED}.Debug|Win32.Build.0 = Debug|Win32
+		{53F3A9DC-F3B9-4EE6-A10A-B819497DD9ED}.Release|Win32.ActiveCfg = Release|Win32
+		{53F3A9DC-F3B9-4EE6-A10A-B819497DD9ED}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

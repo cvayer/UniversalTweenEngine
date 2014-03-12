@@ -1,0 +1,19 @@
+digraph "Tween::Manager::Register"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Tween::Manager::Register",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="Tween::TweenGroup::\lbContains",height=0.2,width=0.4,color="black",URL="$classTween_1_1TweenGroup.html#afbd17077cfc15536a30b7e82f627cc10"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="Tween::Manager::GetGroupByID",height=0.2,width=0.4,color="black",URL="$classTween_1_1Manager.html#a059b53fafd74a055da610cfc37b6639c"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="Tween::Manager::GetGroup\lByIndex",height=0.2,width=0.4,color="black",URL="$classTween_1_1Manager.html#a730f0852926ec37ee4a627e48919a29d"];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="Tween::TweenGroup::\lGetID",height=0.2,width=0.4,color="black",URL="$classTween_1_1TweenGroup.html#aac95e204ae17ddc2a8c8cf808ef3cc62"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="Tween::TweenGroup::\lRegister",height=0.2,width=0.4,color="black",URL="$classTween_1_1TweenGroup.html#a5f27caf28edc9903e83705369e46d984"];
+  Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+}

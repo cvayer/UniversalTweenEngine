@@ -1,0 +1,17 @@
+digraph "Tween::TemplatedTween&lt; T &gt;"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Tween::TemplatedTween\< T \>\n||+ TemplatedTween()\l+ ~TemplatedTween()\l+ Build()\l+ Start()\l+ Start()\l+ Start()\l+ Delay()\l+ Repeat()\l+ SetListener()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
+  Node2 [label="{Tween::BaseTween\n|# m_fDelay\l# m_fDuration\l- m_iListenerTriggers\l- m_iListenerID\l- m_iStep\l- m_iRepeatCount\l- m_fRepeatDelay\l- m_fCurrentTime\l- m_fDt\l|+ BaseTween()\l+ ~BaseTween()\l+ fGetDelay()\l+ fGetDuration()\l+ fGetFullDuration()\l+ fGetRepeatDelay()\l+ fGetCurrentTime()\l+ iGetRepeatCount()\l+ bIsStarted()\l+ bIsInit()\land 8 more...\l# _ForceStartValues()\l# _ForceEndValues()\l# _bContainsTarget()\l# _bContainsTarget()\l# _KillTarget()\l# _KillTarget()\l# _Reset()\l# _bIsReverse()\l# _ForceToStart()\l# _ForceToEnd()\land 10 more...\l- _bIsKilled()\l- _bIsIterationStep()\l- _Initialize()\l- _UpdateRelaunch()\l- _UpdateStep()\l- _UpdateCompletion()\l- _bIsValid()\l}",height=0.2,width=0.4,color="black",URL="$dc/d9e/classTween_1_1BaseTween.html"];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" m_pListener" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node3 [label="{Tween::ITweenListener\n||+ ~ITweenListener()\l+ OnEvent()\l}",height=0.2,width=0.4,color="black",URL="$de/dad/classTween_1_1ITweenListener.html"];
+  Node4 -> Node2 [color="grey25",fontsize="10",style="solid",label=" m_Flags" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node4 [label="{Tween::BitField\< uint8 \>\n|- m_Mask\l|+ BitField()\l+ BitField()\l+ bTestMask()\l+ bTestMask()\l+ bTestMaskAny()\l+ AddMask()\l+ SubMask()\l+ Reset()\l+ GetMask()\l+ Mask()\land 7 more...\l}",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html"];
+  Node5 -> Node4 [dir="back",color="orange",fontsize="10",style="solid",label=" \< uint8 \>" ,fontname="FreeSans"];
+  Node5 [label="{Tween::BitField\< _Mask \>\n||+ BitField()\l+ BitField()\l+ bTestMask()\l+ bTestMaskAny()\l+ bTestMask()\l+ AddMask()\l+ SubMask()\l+ Reset()\l+ GetMask()\l+ Mask()\land 7 more...\l}",height=0.2,width=0.4,color="black",URL="$dc/d42/classTween_1_1BitField.html"];
+  Node6 -> Node5 [color="grey25",fontsize="10",style="solid",label=" m_Mask" ,arrowhead="odiamond",fontname="FreeSans"];
+  Node6 [label="{_Mask\n||}",height=0.2,width=0.4,color="grey75"];
+}

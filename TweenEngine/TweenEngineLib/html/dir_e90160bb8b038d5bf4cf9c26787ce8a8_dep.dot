@@ -1,0 +1,16 @@
+digraph "SRC/Tween" {
+  bgcolor=transparent;
+  compound=true
+  node [ fontsize="10", fontname="FreeSans"];
+  edge [ labelfontsize="10", labelfontname="FreeSans"];
+  subgraph clusterdir_1e771ff450ae847412a8c28572c155bb {
+    graph [ bgcolor="#ddddee", pencolor="black", label="SRC" fontname="FreeSans", fontsize="10", URL="dir_1e771ff450ae847412a8c28572c155bb.html"]
+  dir_e90160bb8b038d5bf4cf9c26787ce8a8 [shape=box, label="Tween", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_e90160bb8b038d5bf4cf9c26787ce8a8.html"];
+  }
+  dir_7b3e4e2b9ca222e217bca0c68c63648e [shape=box label="Tools" URL="dir_7b3e4e2b9ca222e217bca0c68c63648e.html"];
+  dir_bdc70c1285e289e0afe9da249cc18709 [shape=box label="Paths" URL="dir_bdc70c1285e289e0afe9da249cc18709.html"];
+  dir_4314d1f9d7fb4f822970d98616b633f6 [shape=box label="Equations" URL="dir_4314d1f9d7fb4f822970d98616b633f6.html"];
+  dir_e90160bb8b038d5bf4cf9c26787ce8a8->dir_7b3e4e2b9ca222e217bca0c68c63648e [headlabel="3", labeldistance=1.5 headhref="dir_000004_000003.html"];
+  dir_e90160bb8b038d5bf4cf9c26787ce8a8->dir_bdc70c1285e289e0afe9da249cc18709 [headlabel="2", labeldistance=1.5 headhref="dir_000004_000002.html"];
+  dir_e90160bb8b038d5bf4cf9c26787ce8a8->dir_4314d1f9d7fb4f822970d98616b633f6 [headlabel="2", labeldistance=1.5 headhref="dir_000004_000001.html"];
+}

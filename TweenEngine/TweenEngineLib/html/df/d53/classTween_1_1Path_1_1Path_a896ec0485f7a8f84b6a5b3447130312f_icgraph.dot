@@ -1,0 +1,12 @@
+digraph "Tween::Path::Path::GetSegment"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Tween::Path::Path::\lGetSegment",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="Tween::Path::CatmullRomPath\l::Compute",height=0.2,width=0.4,color="black",URL="$d7/d43/classTween_1_1Path_1_1CatmullRomPath.html#a14ac3ca462bf58dfc30ce7c2eac4b613"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="Tween::Path::LinearPath\l::Compute",height=0.2,width=0.4,color="black",URL="$dc/d11/classTween_1_1Path_1_1LinearPath.html#a8fe9fca2c6eb32f00e0993e48639e238"];
+}

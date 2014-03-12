@@ -1,0 +1,20 @@
+digraph "Tween::BitField::AddMask"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Tween::BitField::AddMask",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="Tween::BitField\< uint8\l \>::AddFlag",height=0.2,width=0.4,color="black",URL="$classTween_1_1BitField.html#a5c0078bd1b1e068d4ba90047d896f8a7",tooltip="Flag should be a value between 0 and BitCount(_Mask), do not use shifted values."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="Tween::BitField\< uint8\l \>::ChangeFlag",height=0.2,width=0.4,color="black",URL="$classTween_1_1BitField.html#adc798099b1ef24fa2d6b4a6d80cfe09a",tooltip="Flag should be a value between 0 and BitCount(_Mask), do not use shifted values."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="Tween::BitField\< uint8\l \>::ChangeMask",height=0.2,width=0.4,color="black",URL="$classTween_1_1BitField.html#af5dee125afbd061cd22c92364bb151b9"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="Tween::BaseTween::Kill",height=0.2,width=0.4,color="black",URL="$classTween_1_1BaseTween.html#a98e66c05e759ee0bf8aa2e4d14e524b3"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="Tween::BaseTween::\l_KillTarget",height=0.2,width=0.4,color="black",URL="$classTween_1_1BaseTween.html#a7de013a07e47e27f61e6d6d2a096934e"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="Tween::BaseTween::Pause",height=0.2,width=0.4,color="black",URL="$classTween_1_1BaseTween.html#a44044a8d0e4579ce8d43ca5992a05935"];
+}

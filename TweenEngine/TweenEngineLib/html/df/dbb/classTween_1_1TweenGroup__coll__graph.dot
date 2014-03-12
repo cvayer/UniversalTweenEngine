@@ -1,0 +1,7 @@
+digraph "Tween::TweenGroup"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Tween::TweenGroup\n|- m_Tweens\l- m_ID\l- m_fDtFactor\l- m_bPaused\l|+ TweenGroup()\l+ ~TweenGroup()\l+ bContainsTarget()\l+ bContainsTarget()\l+ KillAll()\l+ KillTarget()\l+ KillTarget()\l+ Pause()\l+ Resume()\l+ Update()\l+ SetDtFactor()\l# Register()\l# GetID()\l- bContains()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+}

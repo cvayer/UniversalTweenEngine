@@ -1,0 +1,7 @@
+digraph "Tween::Manager"
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Tween::Manager\n|+ MAX_GROUP_ID\l+ DEFAULT_GROUP_ID\l- m_TweenGroups\l- m_bPaused\l|+ Manager()\l+ ~Manager()\l+ bContainsTarget()\l+ bContainsTarget()\l+ KillAll()\l+ KillTarget()\l+ KillTarget()\l+ SetDtFactor()\l+ Pause()\l+ Resume()\l+ Update()\l# Register()\l# GetGroupByID()\l# GetGroupByIndex()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+}

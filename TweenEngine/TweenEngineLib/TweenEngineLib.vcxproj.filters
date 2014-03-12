@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Easing">
+      <UniqueIdentifier>{e839b341-8449-411e-9cab-74570a9d4900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Easing\Base">
+      <UniqueIdentifier>{49456b84-969e-4611-a27c-eb5720700298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Easing\Derivated">
+      <UniqueIdentifier>{3f057305-00d6-43cd-bdfe-a187f7d5ba13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Paths">
+      <UniqueIdentifier>{3211b7a8-b36b-4d06-98d5-a13f06f71e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Paths\Base">
+      <UniqueIdentifier>{9608e9e6-3bfd-4a83-9581-7291d6b9c71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Paths\Derivated">
+      <UniqueIdentifier>{5cbfb1b1-e1d4-47a8-8c46-dd98db0d73b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools">
+      <UniqueIdentifier>{e4005287-a26a-430d-8142-4d5616fcd8d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tween">
+      <UniqueIdentifier>{b9a097a8-5a9f-471a-8db3-e3defb51be6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tween\Base">
+      <UniqueIdentifier>{665010e3-bf08-4d7c-897a-856185cdfb27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tween\Manager">
+      <UniqueIdentifier>{8e3606cb-084e-4460-bdc6-27da9b715cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tween\Tweenable">
+      <UniqueIdentifier>{0b5fbd8e-fc05-4f85-bea6-55cd93c9b9b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tween\Tween">
+      <UniqueIdentifier>{ce997877-0d19-4515-9c50-813c61222eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tween\Interfaces">
+      <UniqueIdentifier>{eed2664f-8280-4a1b-963f-54a074defeff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Back.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Bounce.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Circ.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Cubic.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Elastic.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Expo.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Linear.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Quad.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Quart.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Quint.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Equations\Sine.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Paths\Path.cpp">
+      <Filter>Source Files\Paths\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Paths\CatmullRomPath.cpp">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Paths\LinearPath.cpp">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\BaseTween.cpp">
+      <Filter>Source Files\Tween\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Manager.cpp">
+      <Filter>Source Files\Tween\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\TweenGroup.cpp">
+      <Filter>Source Files\Tween\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Timeline.cpp">
+      <Filter>Source Files\Tween\Tween</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Tween.cpp">
+      <Filter>Source Files\Tween\Tween</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SRC\Equations\Easings.h">
+      <Filter>Source Files\Easing</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Easing.h">
+      <Filter>Source Files\Easing\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Back.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Bounce.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Circ.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Cubic.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Elastic.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Expo.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Linear.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Quad.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Quart.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Quint.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Equations\Sine.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Paths\Paths.h">
+      <Filter>Source Files\Paths</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Paths\Path.h">
+      <Filter>Source Files\Paths\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Paths\CatmullRomPath.h">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Paths\LinearPath.h">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tools\BitField.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tools\Pool.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tools\TweenTypeDefs.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\BaseTween.h">
+      <Filter>Source Files\Tween\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\TemplatedTween.h">
+      <Filter>Source Files\Tween\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Manager.h">
+      <Filter>Source Files\Tween\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\TweenGroup.h">
+      <Filter>Source Files\Tween\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\TweenableValue.h">
+      <Filter>Source Files\Tween\Tweenable</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Timeline.h">
+      <Filter>Source Files\Tween\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Tween.h">
+      <Filter>Source Files\Tween\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\ITweenable.h">
+      <Filter>Source Files\Tween\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\ITweenListener.h">
+      <Filter>Source Files\Tween\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
