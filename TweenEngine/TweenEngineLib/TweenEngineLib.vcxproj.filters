@@ -8,17 +8,8 @@
     <Filter Include="Source Files\Easing">
       <UniqueIdentifier>{e839b341-8449-411e-9cab-74570a9d4900}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Easing\Base">
-      <UniqueIdentifier>{49456b84-969e-4611-a27c-eb5720700298}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Easing\Derivated">
-      <UniqueIdentifier>{3f057305-00d6-43cd-bdfe-a187f7d5ba13}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Paths">
       <UniqueIdentifier>{3211b7a8-b36b-4d06-98d5-a13f06f71e0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Paths\Base">
-      <UniqueIdentifier>{9608e9e6-3bfd-4a83-9581-7291d6b9c71c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Paths\Derivated">
       <UniqueIdentifier>{5cbfb1b1-e1d4-47a8-8c46-dd98db0d73b1}</UniqueIdentifier>
@@ -52,52 +43,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Source Files\Easing\Derivated">
+      <UniqueIdentifier>{3f057305-00d6-43cd-bdfe-a187f7d5ba13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Back.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Bounce.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Circ.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Cubic.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Elastic.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Expo.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Linear.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Quad.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Quart.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Quint.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Equations\Sine.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Paths\Path.cpp">
-      <Filter>Source Files\Paths\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Paths\CatmullRomPath.cpp">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Paths\LinearPath.cpp">
-      <Filter>Source Files\Paths\Derivated</Filter>
     </ClCompile>
     <ClCompile Include="SRC\Tween\BaseTween.cpp">
       <Filter>Source Files\Tween\Base</Filter>
@@ -114,68 +66,50 @@
     <ClCompile Include="SRC\Tween\Tween.cpp">
       <Filter>Source Files\Tween\Tween</Filter>
     </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Back.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Bounce.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Circ.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Cubic.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Elastic.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Expo.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Linear.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Quad.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Quart.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Quint.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Easing\Sine.cpp">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Paths\Path.cpp">
+      <Filter>Source Files\Paths</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Paths\CatmullRomPath.cpp">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SRC\Equations\Easings.h">
-      <Filter>Source Files\Easing</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Easing.h">
-      <Filter>Source Files\Easing\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Back.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Bounce.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Circ.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Cubic.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Elastic.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Expo.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Linear.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Quad.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Quart.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Quint.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Equations\Sine.h">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Paths\Paths.h">
-      <Filter>Source Files\Paths</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Paths\Path.h">
-      <Filter>Source Files\Paths\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Paths\CatmullRomPath.h">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Paths\LinearPath.h">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tools\BitField.h">
-      <Filter>Source Files\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tools\Pool.h">
-      <Filter>Source Files\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tools\TweenTypeDefs.h">
-      <Filter>Source Files\Tools</Filter>
-    </ClInclude>
     <ClInclude Include="SRC\Tween\BaseTween.h">
       <Filter>Source Files\Tween\Base</Filter>
     </ClInclude>
@@ -208,6 +142,66 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Easings.h">
+      <Filter>Source Files\Easing</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Sine.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Back.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Bounce.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Circ.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Cubic.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Elastic.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Expo.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Linear.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Quad.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Quart.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Quint.h">
+      <Filter>Source Files\Easing\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing\Easing.h">
+      <Filter>Source Files\Easing</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Paths\Path.h">
+      <Filter>Source Files\Paths</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Paths\Paths.h">
+      <Filter>Source Files\Paths</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Paths\LinearPath.h">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Paths\CatmullRomPath.h">
+      <Filter>Source Files\Paths\Derivated</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Tools\BitField.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Tools\Pool.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\TweenTypeDefs.h">
+      <Filter>Source Files\Tween</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

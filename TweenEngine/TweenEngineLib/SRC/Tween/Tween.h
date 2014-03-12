@@ -2,7 +2,7 @@
 #define __CTWEEN__H__
 
 #include "TemplatedTween.h"
-#include "..\Tools\Pool.h"
+#include "Tools\Pool.h"
 #include <vector>
 
 namespace Tween

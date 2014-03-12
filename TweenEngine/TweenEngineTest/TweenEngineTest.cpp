@@ -2,15 +2,14 @@
 //
 #include "stdafx.h"
 
-#include "Equations/Easing.h"
-#include "Equations/Easings.h"
+#include "Tween/Easing/Easing.h"
+#include "Tween/Easing/Easings.h"
 #include "Tween/Manager.h"
 #include "Tween/Tween.h"
 #include "Tween/Timeline.h"
 #include "Tween/TweenableValue.h"
-#include "Paths/Paths.h"
+#include "Tween/Paths/Paths.h"
 #include "cMyTweenListener.h"
-#include "Tools/BitField.h"
 
 //#include <windows.h>
 
@@ -124,13 +123,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	gluOrtho2D(-1.0, 1.0, -1.0f, 1.0);
-
-	printf("Size of float = %i\n", sizeof(float));
-	printf("Size of int = %i\n", sizeof(int));
-	printf("Size of pointer = %i\n", sizeof(Tween::ITweenListener*));
-	Tween::BitField<uint8> bitfield;
-	printf("Size of bitfield = %i\n", sizeof(bitfield));
-	printf("Size of BaseTween = %i\n", sizeof(Tween::BaseTween));
 
 	// Main loop
 	while( running )

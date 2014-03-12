@@ -2,10 +2,10 @@
 #include"Tween.h"
 
 #include "ITweenable.h"
-#include "../Equations/Easing.h"
-#include "../Paths/Path.h"
-#include "../Equations/Easings.h"
-#include "../Paths/Paths.h"
+#include "Easing/Easing.h"
+#include "Paths/Path.h"
+#include "Easing/Easings.h"
+#include "Paths/Paths.h"
 
 namespace Tween
 {

@@ -11,4 +11,15 @@ typedef unsigned long int       uint32;
 typedef signed long long int    int64; 
 typedef unsigned long long int  uint64; 
 
+#ifdef DEBUG
+#define TWEEN_ASSERT(COND, ...)   if (!(COND)){\
+    char    mes[512], final[512];\
+    sprintf_s(mes, 512, __VA_ARGS__);\
+    sprintf_s(final, 512, "%s : %s%s",__FUNCTION__, mes, "\n");\
+    printf(final);\
+    assert(COND);}
+#else
+#define TWEEN_ASSERT(COND, ...)	
+#endif
+
 #endif

@@ -1,7 +1,7 @@
 #ifndef __ITWEENABLE__H__
 #define __ITWEENABLE__H__
 
-#include "Tools/TweenTypeDefs.h"
+#include "TweenTypeDefs.h"
 
 namespace Tween
 {

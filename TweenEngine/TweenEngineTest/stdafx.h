@@ -5,7 +5,7 @@
 
 #pragma once
 
-//#define GLFW_DLL
+//#define NDEBUG // Un comment to remove asserts
 
 #include "targetver.h"
 

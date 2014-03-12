@@ -2,6 +2,7 @@
 #define __TWEENGROUP__H__
 
 #include <list>
+#include "TweenTypeDefs.h"
 
 namespace Tween
 {
@@ -41,7 +42,7 @@ private :
 
 private : 
 	std::list<BaseTween*>		m_Tweens;
-	uint8				m_ID;
+	uint8				        m_ID;
 	float						m_fDtFactor;
 	bool						m_bPaused;
 };

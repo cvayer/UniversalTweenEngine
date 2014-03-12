@@ -69,24 +69,24 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SRC\Tween\Easing\Back.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Bounce.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Circ.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Cubic.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Elastic.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Expo.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Linear.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Quad.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Quart.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Quint.cpp" />
+    <ClCompile Include="SRC\Tween\Easing\Sine.cpp" />
+    <ClCompile Include="SRC\Tween\Paths\CatmullRomPath.cpp" />
+    <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp" />
+    <ClCompile Include="SRC\Tween\Paths\Path.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SRC\Equations\Back.cpp" />
-    <ClCompile Include="SRC\Equations\Bounce.cpp" />
-    <ClCompile Include="SRC\Equations\Circ.cpp" />
-    <ClCompile Include="SRC\Equations\Cubic.cpp" />
-    <ClCompile Include="SRC\Equations\Elastic.cpp" />
-    <ClCompile Include="SRC\Equations\Expo.cpp" />
-    <ClCompile Include="SRC\Equations\Linear.cpp" />
-    <ClCompile Include="SRC\Equations\Quad.cpp" />
-    <ClCompile Include="SRC\Equations\Quart.cpp" />
-    <ClCompile Include="SRC\Equations\Quint.cpp" />
-    <ClCompile Include="SRC\Equations\Sine.cpp" />
-    <ClCompile Include="SRC\Paths\Path.cpp" />
-    <ClCompile Include="SRC\Paths\CatmullRomPath.cpp" />
-    <ClCompile Include="SRC\Paths\LinearPath.cpp" />
     <ClCompile Include="SRC\Tween\BaseTween.cpp" />
     <ClCompile Include="SRC\Tween\Manager.cpp" />
     <ClCompile Include="SRC\Tween\TweenGroup.cpp" />
@@ -94,35 +94,35 @@
     <ClCompile Include="SRC\Tween\Tween.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SRC\Equations\Easings.h" />
-    <ClInclude Include="SRC\Equations\Easing.h" />
-    <ClInclude Include="SRC\Equations\Back.h" />
-    <ClInclude Include="SRC\Equations\Bounce.h" />
-    <ClInclude Include="SRC\Equations\Circ.h" />
-    <ClInclude Include="SRC\Equations\Cubic.h" />
-    <ClInclude Include="SRC\Equations\Elastic.h" />
-    <ClInclude Include="SRC\Equations\Expo.h" />
-    <ClInclude Include="SRC\Equations\Linear.h" />
-    <ClInclude Include="SRC\Equations\Quad.h" />
-    <ClInclude Include="SRC\Equations\Quart.h" />
-    <ClInclude Include="SRC\Equations\Quint.h" />
-    <ClInclude Include="SRC\Equations\Sine.h" />
-    <ClInclude Include="SRC\Paths\Paths.h" />
-    <ClInclude Include="SRC\Paths\Path.h" />
-    <ClInclude Include="SRC\Paths\CatmullRomPath.h" />
-    <ClInclude Include="SRC\Paths\LinearPath.h" />
-    <ClInclude Include="SRC\Tools\BitField.h" />
-    <ClInclude Include="SRC\Tools\Pool.h" />
-    <ClInclude Include="SRC\Tools\TweenTypeDefs.h" />
     <ClInclude Include="SRC\Tween\BaseTween.h" />
+    <ClInclude Include="SRC\Tween\Easing\Back.h" />
+    <ClInclude Include="SRC\Tween\Easing\Bounce.h" />
+    <ClInclude Include="SRC\Tween\Easing\Circ.h" />
+    <ClInclude Include="SRC\Tween\Easing\Cubic.h" />
+    <ClInclude Include="SRC\Tween\Easing\Easing.h" />
+    <ClInclude Include="SRC\Tween\Easing\Easings.h" />
+    <ClInclude Include="SRC\Tween\Easing\Elastic.h" />
+    <ClInclude Include="SRC\Tween\Easing\Expo.h" />
+    <ClInclude Include="SRC\Tween\Easing\Linear.h" />
+    <ClInclude Include="SRC\Tween\Easing\Quad.h" />
+    <ClInclude Include="SRC\Tween\Easing\Quart.h" />
+    <ClInclude Include="SRC\Tween\Easing\Quint.h" />
+    <ClInclude Include="SRC\Tween\Easing\Sine.h" />
+    <ClInclude Include="SRC\Tween\Paths\CatmullRomPath.h" />
+    <ClInclude Include="SRC\Tween\Paths\LinearPath.h" />
+    <ClInclude Include="SRC\Tween\Paths\Path.h" />
+    <ClInclude Include="SRC\Tween\Paths\Paths.h" />
     <ClInclude Include="SRC\Tween\TemplatedTween.h" />
     <ClInclude Include="SRC\Tween\Manager.h" />
+    <ClInclude Include="SRC\Tween\Tools\BitField.h" />
+    <ClInclude Include="SRC\Tween\Tools\Pool.h" />
     <ClInclude Include="SRC\Tween\TweenGroup.h" />
     <ClInclude Include="SRC\Tween\TweenableValue.h" />
     <ClInclude Include="SRC\Tween\Timeline.h" />
     <ClInclude Include="SRC\Tween\Tween.h" />
     <ClInclude Include="SRC\Tween\ITweenable.h" />
     <ClInclude Include="SRC\Tween\ITweenListener.h" />
+    <ClInclude Include="SRC\Tween\TweenTypeDefs.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

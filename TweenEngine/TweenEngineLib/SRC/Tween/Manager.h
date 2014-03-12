@@ -1,7 +1,7 @@
 #ifndef __TWEENMANAGER__H__
 #define __TWEENMANAGER__H__
 
-#include "Tools/TweenTypeDefs.h"
+#include "TweenTypeDefs.h"
 #include <vector>
 
 namespace Tween

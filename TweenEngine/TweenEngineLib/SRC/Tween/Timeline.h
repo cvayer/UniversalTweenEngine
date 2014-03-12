@@ -3,7 +3,7 @@
 
 #include "TemplatedTween.h"
 #include <vector>
-#include "../Tools/Pool.h"
+#include "Tools/Pool.h"
 
 namespace Tween
 {
