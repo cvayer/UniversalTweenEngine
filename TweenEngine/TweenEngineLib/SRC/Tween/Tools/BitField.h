@@ -6,113 +6,113 @@
 namespace Tween
 {
 
-template <class _Mask> class BitField
+template <class T> class BitField
 {
 public : 
 	BitField()
-		: m_Mask(0)
+		: m_mask(0)
 	{
 	}
 
-    BitField(_Mask _mask)
-        : m_Mask(_mask)
+    BitField(T _mask)
+        : m_mask(_mask)
     {
     }
 
 	//test the exact mask (all the bits active)
-    inline bool bTestMask(const _Mask& _ToTest)const
+    inline bool TestMask(const T& _toTest)const
 	{
-		return (m_Mask & _ToTest) == _ToTest;
+		return (m_mask & _toTest) == _toTest;
 	}
 
 	//test for any of the mask bits to be active
-    inline bool bTestMaskAny(const _Mask& _ToTest) const
+    inline bool TestMaskAny(const T& _toTest) const
     {
-        return (m_Mask & _ToTest) != 0;
+        return (m_mask & _toTest) != 0;
     }
 
-	inline  bool    bTestMask    (const _Mask& _Mandatory, const _Mask& _AtLeastOne, const _Mask& _Exclude)const
+	inline  bool    TestMask    (const T& _mandatory, const T& _atLeastOne, const T& _exclude)const
 	{
-		bool bRet = bTestMask(_Mandatory) && (( m_Mask & _Exclude) == 0) && ( (!_AtLeastOne) || ((m_Mask & _AtLeastOne) > 0) );
+		bool bRet = TestMask(_mandatory) && (( m_mask & _exclude) == 0) && ( (!_atLeastOne) || ((m_mask & _atLeastOne) > 0) );
 		return bRet;
 	}
 
-	inline void AddMask(const _Mask& _ToAdd)
+	inline void AddMask(const T& _toAdd)
 	{
-		m_Mask |= _ToAdd;
+		m_mask |= _toAdd;
 	}
 
-	inline void SubMask(const _Mask& _ToSub)
+	inline void SubMask(const T& _toSub)
 	{
-		m_Mask &= ~(_ToSub);
+		m_mask &= ~(_toSub);
 	}
 
 	inline void Reset()
 	{
-		m_Mask = 0;
+		m_mask = 0;
 	}
 
-	inline  _Mask   GetMask     ()const
+	inline  T   GetMask     () const
 	{
-		return m_Mask;
+		return m_mask;
 	}
 
-    inline _Mask&    Mask       ()
+    inline T&    Mask       ()
     {
-        return m_Mask;
+        return m_mask;
     }
 
-	inline  void    SetMask     (_Mask _Val)
+	inline  void    SetMask     (T _val)
 	{
-		m_Mask = _Val;
+		m_mask = _val;
 	}
 
-	inline  void    ChangeMask  (_Mask _Val, bool _On)
+	inline  void    ChangeMask  (T _val, bool _on)
 	{
-		if (_On)
-			AddMask(_Val);
+		if (_on)
+			AddMask(_val);
 		else
-			SubMask(_Val);
+			SubMask(_val);
 	}
 
 	// uint8 for flags should be enough as they can't be over 64
 	//! Flag should be a value between 0 and BitCount(_Mask), do not use shifted values
-	inline _Mask FlagToMask(uint8 _Flag) const
+	inline T FlagToMask(uint8 _flag) const
 	{
-		return (_Mask)1ll<<_Flag;
+		return (T)(1ll<<_flag);
 	}
 
 	//! Flag should be a value between 0 and BitCount(_Mask), do not use shifted values
-	inline bool bTestFlag(uint8 _Flag) const
+	inline bool TestFlag(uint8 _flag) const
 	{
-		return bTestMask(FlagToMask(_Flag));
+		return TestMask(FlagToMask(_flag));
 	}
 
 	//! Flag should be a value between 0 and BitCount(_Mask), do not use shifted values
-	inline void AddFlag(uint8 _Flag)
+	inline void AddFlag(uint8 _flag)
 	{
-		AddMask(FlagToMask(_Flag));
+		AddMask(FlagToMask(_flag));
 	}
 
 	//! Flag should be a value between 0 and BitCount(_Mask), do not use shifted values
-	inline void SubFlag(uint8 _Flag)
+	inline void SubFlag(uint8 _flag)
 	{
-		SubMask(FlagToMask(_Flag));
+		SubMask(FlagToMask(_flag));
 	}
 
 	//! Flag should be a value between 0 and BitCount(_Mask), do not use shifted values
-	inline  void    ChangeFlag  (uint8 _Flag, bool _On)
+	inline  void    ChangeFlag  (uint8 _flag, bool _on)
 	{
-		if (_On)
-			AddMask(FlagToMask(_Flag));
+		if (_on)
+			AddMask(FlagToMask(_flag));
 		else
-			SubMask(FlagToMask(_Flag));
+			SubMask(FlagToMask(_flag));
 	}
 
-    typedef _Mask MaskType;
+    typedef T MaskType;
 
 private : 
-	_Mask m_Mask;
+	T m_mask;
 };
 
 } // Namespace Tween

@@ -30,14 +30,14 @@ public :
 	inline	float		fGetRepeatDelay()	const { return m_fRepeatDelay;	}
 	inline	float		fGetCurrentTime()	const { return m_fCurrentTime;	}
 	inline	int			iGetRepeatCount()	const { return m_iRepeatCount;	}
-	inline	bool		bIsStarted()		const { return m_Flags.bTestMask(eIsStarted);		}
-	inline	bool		bIsInit()			const { return m_Flags.bTestMask(eIsInit);			}
-	inline	bool		bIsFinished()		const { return m_Flags.bTestMask(eIsFinished) || _bIsKilled(); }
-	inline	bool		bIsYoyo()			const { return m_Flags.bTestMask(eIsYoyo);			}
-	inline	bool		bIsPaused()			const { return m_Flags.bTestMask(eIsPaused);		}
+	inline	bool		bIsStarted()		const { return m_Flags.TestMask(eIsStarted);		}
+	inline	bool		bIsInit()			const { return m_Flags.TestMask(eIsInit);			}
+	inline	bool		bIsFinished()		const { return m_Flags.TestMask(eIsFinished) || _bIsKilled(); }
+	inline	bool		bIsYoyo()			const { return m_Flags.TestMask(eIsYoyo);			}
+	inline	bool		bIsPaused()			const { return m_Flags.TestMask(eIsPaused);		}
 private : 
-	inline	bool		_bIsKilled()		const { return m_Flags.bTestMask(eIsKilled);		}
-	inline	bool		_bIsIterationStep()	const { return m_Flags.bTestMask(eIsIterationStep);	}
+	inline	bool		_bIsKilled()		const { return m_Flags.TestMask(eIsKilled);		}
+	inline	bool		_bIsIterationStep()	const { return m_Flags.TestMask(eIsIterationStep);	}
 public :
 
 	inline	void		Kill()		{ m_Flags.AddMask(eIsKilled); }

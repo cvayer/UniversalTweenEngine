@@ -17,13 +17,13 @@ const Easing::Easing*		Tween::s_pDefaultEasing = &(Easing::LINEAR);
 
 Pool<Tween>	Tween::s_Pool = Pool<Tween>();
 
-void Pool<Tween>::_OnPool(Tween* _pObject) 
+void Pool<Tween>::OnPool(Tween* _pObject) 
 {
 	if(_pObject)
 		_pObject->_Reset();
 }
 
-void Pool<Tween>::_OnUnPool(Tween* _pObject) 
+void Pool<Tween>::OnUnPool(Tween* _pObject) 
 {
 	if(_pObject)
 		_pObject->_Reset();

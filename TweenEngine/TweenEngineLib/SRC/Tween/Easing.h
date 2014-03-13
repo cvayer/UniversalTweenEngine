@@ -11,8 +11,6 @@ namespace Easing
 	//--------------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------------
 
-	// TODO have only one compute function with one t parameter
-
 	/**
 	@brief Base class for all easing interpolations.
 	@details If you want to define your own interpolations, they should derivate from that class.
@@ -38,6 +36,8 @@ namespace Easing
 	DECLARE_EASING_CLASS(name##In,	parentName) 	\
 	DECLARE_EASING_CLASS(name##Out,	parentName) 	\
 	DECLARE_EASING_CLASS(name##InOut, parentName) 	\
+
+
 	//--------------------------------------------------------------------------------------
 	// Back
 	//--------------------------------------------------------------------------------------

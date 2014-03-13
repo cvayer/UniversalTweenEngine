@@ -13,13 +13,13 @@ namespace Tween
 
 Pool<Timeline>	Timeline::s_Pool = Pool<Timeline>();
 
-void Pool<Timeline>::_OnPool(Timeline* _pObject) 
+void Pool<Timeline>::OnPool(Timeline* _pObject) 
 {
 	if(_pObject)
 		_pObject->_Reset();
 }
 
-void Pool<Timeline>::_OnUnPool(Timeline* _pObject) 
+void Pool<Timeline>::OnUnPool(Timeline* _pObject) 
 {
 	if(_pObject)
 		_pObject->_Reset();
