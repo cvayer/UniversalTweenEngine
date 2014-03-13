@@ -49,16 +49,16 @@ public :
 
 protected : 
 
-	virtual	void		_Reset();
+	virtual	void		Reset();
 	virtual	void		_Build();
 	virtual	void		_Start();
 
 
 	virtual void		_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt);
-	virtual void		_ForceStartValues	()														;
-	virtual void		_ForceEndValues		()														;
-	virtual bool		_bContainsTarget(ITweenable* _pTarget)	const								;
-	virtual bool		_bContainsTarget(ITweenable* _pTarget, int _iType)	const					;
+	virtual void		ForceStartValues	()														;
+	virtual void		ForceEndValues		()														;
+	virtual bool		ContainsTarget(ITweenable* _pTarget)	const								;
+	virtual bool		ContainsTarget(ITweenable* _pTarget, int _iType)	const					;
 
 private : 
 			void		_UpdateChildren(float _fDt, bool _bBackward = false);

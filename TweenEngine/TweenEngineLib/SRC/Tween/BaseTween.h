@@ -24,89 +24,89 @@ public :
 
 	virtual	~BaseTween() {}
 
-	inline	float		fGetDelay()			const { return m_fDelay;		}
-	inline	float		fGetDuration()		const { return m_fDuration;		}
-	inline	float		fGetFullDuration()	const { return (m_iRepeatCount == 0) ? m_fDelay + m_fDuration : (m_iRepeatCount < 0) ? -1.0f : m_fDelay + m_fDuration + (m_fRepeatDelay + m_fDuration) *m_iRepeatCount; }
-	inline	float		fGetRepeatDelay()	const { return m_fRepeatDelay;	}
-	inline	float		fGetCurrentTime()	const { return m_fCurrentTime;	}
-	inline	int			iGetRepeatCount()	const { return m_iRepeatCount;	}
-	inline	bool		bIsStarted()		const { return m_Flags.TestMask(eIsStarted);		}
-	inline	bool		bIsInit()			const { return m_Flags.TestMask(eIsInit);			}
-	inline	bool		bIsFinished()		const { return m_Flags.TestMask(eIsFinished) || _bIsKilled(); }
-	inline	bool		bIsYoyo()			const { return m_Flags.TestMask(eIsYoyo);			}
-	inline	bool		bIsPaused()			const { return m_Flags.TestMask(eIsPaused);		}
+	inline	float		GetDelay()			const { return m_delay;		}
+	inline	float		GetDuration()		const { return m_duration;		}
+	inline	float		GetFullDuration()	const { return (m_repeatCount == 0) ? m_delay + m_duration : (m_repeatCount < 0) ? -1.0f : m_delay + m_duration + (m_repeatDelay + m_duration) *m_repeatCount; }
+	inline	float		GetRepeatDelay()	const { return m_repeatDelay;	}
+	inline	float		GetCurrentTime()	const { return m_currentTime;	}
+	inline	int			GetRepeatCount()	const { return m_repeatCount;	}
+	inline	bool		IsStarted()		    const { return m_flags.TestMask(eIsStarted);		}
+	inline	bool		IsInit()			const { return m_flags.TestMask(eIsInit);			}
+	inline	bool		IsFinished()		const { return m_flags.TestMask(eIsFinished) || IsKilled(); }
+	inline	bool		IsYoyo()			const { return m_flags.TestMask(eIsYoyo);			}
+	inline	bool		IsPaused()			const { return m_flags.TestMask(eIsPaused);		}
 private : 
-	inline	bool		_bIsKilled()		const { return m_Flags.TestMask(eIsKilled);		}
-	inline	bool		_bIsIterationStep()	const { return m_Flags.TestMask(eIsIterationStep);	}
+	inline	bool		IsKilled()		    const { return m_flags.TestMask(eIsKilled);		}
+	inline	bool		IsIterationStep()	const { return m_flags.TestMask(eIsIterationStep);	}
 public :
 
-	inline	void		Kill()		{ m_Flags.AddMask(eIsKilled); }
-	inline	void		Pause()		{ m_Flags.AddMask(eIsPaused); }
-	inline	void		Resume()	{ m_Flags.SubMask(eIsPaused); }
+	inline	void		Kill()		{ m_flags.AddMask(eIsKilled); }
+	inline	void		Pause()		{ m_flags.AddMask(eIsPaused); }
+	inline	void		Resume()	{ m_flags.SubMask(eIsPaused); }
 
-			void		Update(float _fDt);
+			void		Update(float _dt);
 
 	virtual void		Free()	{}
 
 protected : 
     			        BaseTween();
-	virtual void		_ForceStartValues	()																= 0;
-	virtual void		_ForceEndValues		()																= 0;
-	virtual bool		_bContainsTarget(ITweenable* _pTarget)	const										= 0;
-	virtual bool		_bContainsTarget(ITweenable* _pTarget, int _iType) const							= 0;
+	virtual void		ForceStartValues	()																= 0;
+	virtual void		ForceEndValues		()																= 0;
+	virtual bool		ContainsTarget(ITweenable* _target)	const										    = 0;
+	virtual bool		ContainsTarget(ITweenable* _target, int _type) const							    = 0;
 
-			void		_KillTarget(ITweenable* _pTarget);
-			void		_KillTarget(ITweenable* _pTarget, int _iType);
+			void		KillTarget(ITweenable* _target);
+			void		KillTarget(ITweenable* _target, int _type);
 
-	virtual	void		_Reset();
+	virtual	void		Reset();
 
-	inline	bool		_bIsReverse(int _iStep)	const  
+	inline	bool		IsReverse(int _step)	const  
 			{ 
-				return bIsYoyo() && (abs(_iStep%4) == 2);	
+				return IsYoyo() && (abs(_step%4) == 2);	
 			}
 
-			void		_ForceToStart();
-			void		_ForceToEnd(float _fTime);
-			void		_CallCallback(ITweenListener::EEventType _eType);
+			void		ForceToStart();
+			void		ForceToEnd(float _time);
+			void		CallCallback(ITweenListener::EEventType _type);
 
 
-	virtual void		_InnerInitialize	()																	{}
-	virtual void		_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)	{}
+	virtual void		OnInitialize	()																	{}
+	virtual void		_InnerUpdate		(int _step, int _lastStep, bool _isIterationStep, float _dt)	{}
 	virtual	void		_Build() {}
 	virtual	void		_Start();
-			void		_Start(Manager* _pManager);
-			void		_Start(Manager* _pManager, uint8 _GroupID);
-			void		_Delay(float _fDelay);
-			void		_Repeat(int _Count, float _fDelay, bool _bYoyo = false);
+			void		_Start(Manager* _manager);
+			void		_Start(Manager* _manager, uint8 _groupID);
+			void		_Delay(float _delay);
+			void		_Repeat(int _count, float _delay, bool _isYoyo = false);
 
-			void		_SetListener(ITweenListener* _pListener, int _iID = -1, int _iTriggers = ITweenListener::eComplete);
+			void		OnSetListener(ITweenListener* _listener, int _ID = -1, int _triggers = ITweenListener::eComplete);
 
 private : 
-			void		_Initialize();
-			void		_UpdateRelaunch();
-			void		_UpdateStep();
-			void		_UpdateCompletion();
+			void		Initialize();
+			void		UpdateRelaunch();
+			void		UpdateStep();
+			void		UpdateCompletion();
 
-	inline	bool		_bIsValid(const int& _iStep) const 
+	inline	bool		IsStepValid(const int& _step) const 
 			{ 
-				return (_iStep >= 0 && _iStep <= m_iRepeatCount*2) || m_iRepeatCount < 0; 
+				return (_step >= 0 && _step <= m_repeatCount*2) || m_repeatCount < 0; 
 			}
 
 
 private : 
-	ITweenListener* m_pListener;
-	int				m_iListenerTriggers;
-	int				m_iListenerID;
-	int				m_iStep;
-	int				m_iRepeatCount;
+	ITweenListener* m_listener;
+	int				m_listenerTriggers;
+	int				m_listenerID;
+	int				m_step;
+	int				m_repeatCount;
 
 protected : 
-	float			m_fDelay;
-	float			m_fDuration;
+	float			m_delay;
+	float			m_duration;
 private : 
-	float			m_fRepeatDelay;
-	float			m_fCurrentTime;
-	float			m_fDt;
+	float			m_repeatDelay;
+	float			m_currentTime;
+	float			m_dt;
 
 	enum eBaseTweenFlags
 	{
@@ -118,7 +118,7 @@ private :
 		eIsYoyo				= (1<<5),
 		eIsIterationStep	= (1<<6),
 	};
-	BitField<uint8> m_Flags;
+	BitField<uint8> m_flags;
 };
 
 //--------------------------------------------------------------------------------
@@ -143,13 +143,13 @@ public :
     }
 
 
-    T*			Build()
+    T*	Build()
     {
         _Build();
         return (T*)this;
     }
 
-    T*			Start()
+    T*	Start()
     {
         _Start();
         return (T*)this;
@@ -182,7 +182,7 @@ public :
 
     T*	SetListener(ITweenListener* _pListener, int _iID = -1, int _iTriggers = ITweenListener::eComplete)
     {
-        _SetListener(_pListener, _iID, _iTriggers);
+        OnSetListener(_pListener, _iID, _iTriggers);
         return (T*)this;
     }
 };
