@@ -11,9 +11,6 @@
     <Filter Include="Source Files\Paths">
       <UniqueIdentifier>{3211b7a8-b36b-4d06-98d5-a13f06f71e0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Paths\Derivated">
-      <UniqueIdentifier>{5cbfb1b1-e1d4-47a8-8c46-dd98db0d73b1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Tools">
       <UniqueIdentifier>{e4005287-a26a-430d-8142-4d5616fcd8d5}</UniqueIdentifier>
     </Filter>
@@ -63,17 +60,11 @@
     <ClCompile Include="SRC\Tween\Tween.cpp">
       <Filter>Source Files\Tween\Tween</Filter>
     </ClCompile>
-    <ClCompile Include="SRC\Tween\Paths\Path.cpp">
-      <Filter>Source Files\Paths</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Paths\CatmullRomPath.cpp">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClCompile>
     <ClCompile Include="SRC\Tween\Easing.cpp">
       <Filter>Source Files\Easing</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Tween\Path.cpp">
+      <Filter>Source Files\Paths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,18 +101,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SRC\Tween\Paths\Path.h">
-      <Filter>Source Files\Paths</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Paths\Paths.h">
-      <Filter>Source Files\Paths</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Paths\LinearPath.h">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Paths\CatmullRomPath.h">
-      <Filter>Source Files\Paths\Derivated</Filter>
-    </ClInclude>
     <ClInclude Include="SRC\Tween\Tools\BitField.h">
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
@@ -133,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="SRC\Tween\Easing.h">
       <Filter>Source Files\Easing</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Path.h">
+      <Filter>Source Files\Paths</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

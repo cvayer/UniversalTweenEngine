@@ -7,7 +7,7 @@
 #include "Tween/Tween.h"
 #include "Tween/Timeline.h"
 #include "Tween/TweenableValue.h"
-#include "Tween/Paths/Paths.h"
+#include "Tween/Path.h"
 #include "cMyTweenListener.h"
 
 //#include <windows.h>

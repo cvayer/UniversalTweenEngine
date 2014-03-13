@@ -70,9 +70,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SRC\Tween\Easing.cpp" />
-    <ClCompile Include="SRC\Tween\Paths\CatmullRomPath.cpp" />
-    <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp" />
-    <ClCompile Include="SRC\Tween\Paths\Path.cpp" />
+    <ClCompile Include="SRC\Tween\Path.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -86,10 +84,7 @@
   <ItemGroup>
     <ClInclude Include="SRC\Tween\BaseTween.h" />
     <ClInclude Include="SRC\Tween\Easing.h" />
-    <ClInclude Include="SRC\Tween\Paths\CatmullRomPath.h" />
-    <ClInclude Include="SRC\Tween\Paths\LinearPath.h" />
-    <ClInclude Include="SRC\Tween\Paths\Path.h" />
-    <ClInclude Include="SRC\Tween\Paths\Paths.h" />
+    <ClInclude Include="SRC\Tween\Path.h" />
     <ClInclude Include="SRC\Tween\TemplatedTween.h" />
     <ClInclude Include="SRC\Tween\Manager.h" />
     <ClInclude Include="SRC\Tween\Tools\BitField.h" />

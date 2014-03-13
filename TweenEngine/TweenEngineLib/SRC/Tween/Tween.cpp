@@ -3,8 +3,7 @@
 
 #include "ITweenable.h"
 #include "Easing.h"
-#include "Paths/Path.h"
-#include "Paths/Paths.h"
+#include "Path.h"
 
 namespace Tween
 {
