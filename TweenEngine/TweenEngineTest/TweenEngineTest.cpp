@@ -2,8 +2,7 @@
 //
 #include "stdafx.h"
 
-#include "Tween/Easing/Easing.h"
-#include "Tween/Easing/Easings.h"
+#include "Tween/Easing.h"
 #include "Tween/Manager.h"
 #include "Tween/Tween.h"
 #include "Tween/Timeline.h"

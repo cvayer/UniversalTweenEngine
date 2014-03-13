@@ -43,9 +43,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Source Files\Easing\Derivated">
-      <UniqueIdentifier>{3f057305-00d6-43cd-bdfe-a187f7d5ba13}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -66,33 +63,6 @@
     <ClCompile Include="SRC\Tween\Tween.cpp">
       <Filter>Source Files\Tween\Tween</Filter>
     </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Circ.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Cubic.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Elastic.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Expo.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Linear.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Quad.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Quart.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Quint.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Sine.cpp">
-      <Filter>Source Files\Easing\Derivated</Filter>
-    </ClCompile>
     <ClCompile Include="SRC\Tween\Paths\Path.cpp">
       <Filter>Source Files\Paths</Filter>
     </ClCompile>
@@ -102,7 +72,7 @@
     <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp">
       <Filter>Source Files\Paths\Derivated</Filter>
     </ClCompile>
-    <ClCompile Include="SRC\Tween\Easing\Easing.cpp">
+    <ClCompile Include="SRC\Tween\Easing.cpp">
       <Filter>Source Files\Easing</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,12 +110,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Easings.h">
-      <Filter>Source Files\Easing</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Easing\Easing.h">
-      <Filter>Source Files\Easing</Filter>
-    </ClInclude>
     <ClInclude Include="SRC\Tween\Paths\Path.h">
       <Filter>Source Files\Paths</Filter>
     </ClInclude>
@@ -166,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="SRC\Tween\TweenTypeDefs.h">
       <Filter>Source Files\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\Easing.h">
+      <Filter>Source Files\Easing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

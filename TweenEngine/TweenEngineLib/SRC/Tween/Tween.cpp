@@ -2,9 +2,8 @@
 #include"Tween.h"
 
 #include "ITweenable.h"
-#include "Easing/Easing.h"
+#include "Easing.h"
 #include "Paths/Path.h"
-#include "Easing/Easings.h"
 #include "Paths/Paths.h"
 
 namespace Tween
@@ -334,8 +333,8 @@ void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, f
 	}
 
 	float fTime = _bIsReverse(_iStep)? m_fDuration - fGetCurrentTime() : fGetCurrentTime();
-
-	float t = m_pEasing->Compute(fTime, m_fDuration);
+    float timeCursor = fTime/m_fDuration;
+	float t = m_pEasing->Compute(timeCursor);
 
 	if(m_ucWaypointsCount == 0 || m_pPath == NULL)
 	{

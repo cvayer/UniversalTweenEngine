@@ -69,16 +69,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SRC\Tween\Easing\Circ.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Cubic.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Easing.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Elastic.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Expo.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Linear.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Quad.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Quart.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Quint.cpp" />
-    <ClCompile Include="SRC\Tween\Easing\Sine.cpp" />
+    <ClCompile Include="SRC\Tween\Easing.cpp" />
     <ClCompile Include="SRC\Tween\Paths\CatmullRomPath.cpp" />
     <ClCompile Include="SRC\Tween\Paths\LinearPath.cpp" />
     <ClCompile Include="SRC\Tween\Paths\Path.cpp" />
@@ -94,8 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SRC\Tween\BaseTween.h" />
-    <ClInclude Include="SRC\Tween\Easing\Easing.h" />
-    <ClInclude Include="SRC\Tween\Easing\Easings.h" />
+    <ClInclude Include="SRC\Tween\Easing.h" />
     <ClInclude Include="SRC\Tween\Paths\CatmullRomPath.h" />
     <ClInclude Include="SRC\Tween\Paths\LinearPath.h" />
     <ClInclude Include="SRC\Tween\Paths\Path.h" />
