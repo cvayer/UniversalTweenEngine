@@ -43,7 +43,7 @@ Timeline* Timeline::CreateParallel()
 
 //--------------------------------------------------------------------------------
 Timeline::Timeline()
-: TemplatedTween<Timeline>()
+: BaseTemplatedTween<Timeline>()
 , m_pCurrent(NULL)
 , m_pParent(NULL)
 , m_eMode(eSequence)
@@ -60,7 +60,7 @@ Timeline::~Timeline()
 //--------------------------------------------------------------------------------
 void Timeline::_Reset()
 {
-	TemplatedTween<Timeline>::_Reset();
+	BaseTemplatedTween<Timeline>::_Reset();
 
 	m_Children.clear();
 	m_pCurrent = NULL;
@@ -215,7 +215,7 @@ Timeline* Timeline::End()
 //--------------------------------------------------------------------------------
 void Timeline::_Start()
 {
-	TemplatedTween<Timeline>::_Start();
+	BaseTemplatedTween<Timeline>::_Start();
 
 	for (size_t i=0; i<m_Children.size(); i++) 
 	{

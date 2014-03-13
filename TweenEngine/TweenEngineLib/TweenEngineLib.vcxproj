@@ -85,7 +85,6 @@
     <ClInclude Include="SRC\Tween\BaseTween.h" />
     <ClInclude Include="SRC\Tween\Easing.h" />
     <ClInclude Include="SRC\Tween\Path.h" />
-    <ClInclude Include="SRC\Tween\TemplatedTween.h" />
     <ClInclude Include="SRC\Tween\Manager.h" />
     <ClInclude Include="SRC\Tween\Tools\BitField.h" />
     <ClInclude Include="SRC\Tween\Tools\Pool.h" />

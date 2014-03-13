@@ -71,9 +71,6 @@
     <ClInclude Include="SRC\Tween\BaseTween.h">
       <Filter>Source Files\Tween\Base</Filter>
     </ClInclude>
-    <ClInclude Include="SRC\Tween\TemplatedTween.h">
-      <Filter>Source Files\Tween\Base</Filter>
-    </ClInclude>
     <ClInclude Include="SRC\Tween\Manager.h">
       <Filter>Source Files\Tween\Manager</Filter>
     </ClInclude>

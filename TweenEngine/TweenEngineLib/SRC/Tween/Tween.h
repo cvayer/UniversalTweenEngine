@@ -1,7 +1,7 @@
 #ifndef __CTWEEN__H__
 #define __CTWEEN__H__
 
-#include "TemplatedTween.h"
+#include "BaseTween.h"
 #include "Tools\Pool.h"
 #include <vector>
 
@@ -26,7 +26,7 @@ namespace Easing
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-class Tween : public TemplatedTween<Tween>
+class Tween : public BaseTemplatedTween<Tween>
 {
 	friend class Pool<Tween>;
 

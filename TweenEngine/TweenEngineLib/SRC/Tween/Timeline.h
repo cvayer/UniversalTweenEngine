@@ -1,7 +1,7 @@
 #ifndef __TWEENTIMELINE__H__
 #define __TWEENTIMELINE__H__
 
-#include "TemplatedTween.h"
+#include "BaseTween.h"
 #include <vector>
 #include "Tools/Pool.h"
 
@@ -15,7 +15,7 @@ class Tween;
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-class Timeline : public TemplatedTween<Timeline>
+class Timeline : public BaseTemplatedTween<Timeline>
 {
 public : 
 	friend class Pool<Timeline>;

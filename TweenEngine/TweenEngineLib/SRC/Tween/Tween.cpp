@@ -31,7 +31,7 @@ void Pool<Tween>::_OnUnPool(Tween* _pObject)
 
 //--------------------------------------------------------------------------------
 Tween::Tween()
-: TemplatedTween<Tween>()
+: BaseTemplatedTween<Tween>()
 , m_iType(InvalidType)
 , m_pEasing(NULL)
 , m_pPath(NULL)
@@ -52,7 +52,7 @@ Tween::~Tween()
 //--------------------------------------------------------------------------------
 void Tween::_Reset()
 {
-	TemplatedTween<Tween>::_Reset();
+	BaseTemplatedTween<Tween>::_Reset();
 
 	m_iType = InvalidType;
 	m_pEasing = NULL;
