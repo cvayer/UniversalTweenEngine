@@ -33,7 +33,9 @@ void BaseTween::Update(float _fDt)
 	m_fDt = _fDt;
 
 	if(!bIsInit())
+    {
 		_Initialize();
+    }
 
 	if(bIsInit())
 	{
@@ -172,7 +174,7 @@ void BaseTween::_Initialize()
 		m_Flags.ChangeMask(eIsInit, true);
 		m_Flags.ChangeMask(eIsIterationStep, true);
 		m_iStep = 0;
-		m_fDt -= m_fDelay - m_fCurrentTime;
+		m_fDt -= (m_fDelay - m_fCurrentTime);
 		m_fCurrentTime = 0.0f;
 		_CallCallback(ITweenListener::eBegin);
 		_CallCallback(ITweenListener::eStart);
@@ -250,9 +252,13 @@ void BaseTween::_UpdateStep()
 			_InnerUpdate(m_iStep, m_iStep + 1, _bIsIterationStep(), fDt);
 			_CallCallback(ITweenListener::eBackEnd);
 			if(m_iStep < 0 && m_iRepeatCount >= 0)
+            {
 				_CallCallback(ITweenListener::eBackComplete);
-			else
+            }
+			else 
+            {
 				m_fCurrentTime = m_fRepeatDelay;
+            }
 		}
 		else if(_bIsIterationStep() && m_fCurrentTime + m_fDt  > m_fDuration)
 		{
@@ -265,7 +271,9 @@ void BaseTween::_UpdateStep()
 			_InnerUpdate(m_iStep, m_iStep - 1, _bIsIterationStep(), fDt);
 			_CallCallback(ITweenListener::eEnd);
 			if(m_iStep > m_iRepeatCount*2 && m_iRepeatCount >= 0)
+            {
 				_CallCallback(ITweenListener::eComplete);
+            }
 			m_fCurrentTime = 0.0f;
 		}
 		else if(_bIsIterationStep())

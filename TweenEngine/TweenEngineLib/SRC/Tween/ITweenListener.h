@@ -18,6 +18,7 @@ namespace Tween
 * <b>START</b>: at each iteration beginning<br/>
 * <b>END</b>: at each iteration ending, before the repeat delay<br/>
 * <b>COMPLETE</b>: at last END<br/>
+* <b>BACK_BEGIN</b>: at the beginning of the first backward iteration<br/>
 * <b>BACK_START</b>: at each backwards iteration beginning, after the repeat delay<br/>
 * <b>BACK_END</b>: at each backwards iteration ending<br/>
 * <b>BACK_COMPLETE</b>: at last BACK_END
