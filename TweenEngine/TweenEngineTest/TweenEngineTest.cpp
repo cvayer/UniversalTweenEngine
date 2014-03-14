@@ -117,28 +117,28 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			fGroup0DtFactor += fGroupDtFactorIncrement;
 			printf("DT 0 factor = %f\n", fGroup0DtFactor);
-			manager.SetDtFactor(fGroup0DtFactor, 0);
+			manager.SetDtScale(fGroup0DtFactor, 0);
 		}
 
 		if(glfwGetKey( GLFW_KEY_DOWN ))
 		{
 			fGroup0DtFactor -= fGroupDtFactorIncrement;
 			printf("DT 0 factor = %f\n", fGroup0DtFactor);
-			manager.SetDtFactor(fGroup0DtFactor, 0);
+			manager.SetDtScale(fGroup0DtFactor, 0);
 		}
 
 		if(glfwGetKey( GLFW_KEY_RIGHT ))
 		{
 			fGroup1DtFactor += fGroupDtFactorIncrement;
 			printf("DT 1 factor = %f\n", fGroup1DtFactor);
-			manager.SetDtFactor(fGroup1DtFactor, 1);
+			manager.SetDtScale(fGroup1DtFactor, 1);
 		}
 
 		if(glfwGetKey( GLFW_KEY_LEFT ))
 		{
 			fGroup1DtFactor -= fGroupDtFactorIncrement;
 			printf("DT 1 factor = %f\n", fGroup1DtFactor);
-			manager.SetDtFactor(fGroup1DtFactor, 1);
+			manager.SetDtScale(fGroup1DtFactor, 1);
 		}
 
 

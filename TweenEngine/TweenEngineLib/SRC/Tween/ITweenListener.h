@@ -5,11 +5,11 @@ namespace Tween
 {
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
-// cTweenCallback
+// ITweenListener
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-/* TweenCallbacks are used to trigger actions at some specific times. They are
+/* ITweenListener are used to trigger actions at some specific times. They are
 * used both in Tweens and in Timelines. The moment when the callback is
 * triggered depends on its type:
 * <br/><br/>
@@ -51,7 +51,7 @@ public :
 		eAll			= 0xFF,
 	};
 
-	virtual void OnEvent(EEventType _eType, int _iTweenID) = 0;
+	virtual void OnEvent(EEventType _type, int _tweenID) = 0;
 };
 
 } // Namespace Tween

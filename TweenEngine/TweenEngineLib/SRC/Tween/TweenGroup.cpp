@@ -11,8 +11,8 @@ namespace Tween
 //--------------------------------------------------------------------------------
 
 TweenGroup::TweenGroup(uint8 _ID)
-: m_bPaused(false)
-, m_fDtFactor(1.0f)
+: m_isPaused(false)
+, m_dtScale(1.0f)
 , m_ID(_ID)
 {
 
@@ -25,20 +25,24 @@ TweenGroup::~TweenGroup()
 }
 
 //--------------------------------------------------------------------------------
-void TweenGroup::Register(BaseTween* _pTween)
+void TweenGroup::Register(BaseTween* _tween)
 {
-	if(!bContains(_pTween))
-		m_Tweens.push_back(_pTween);
+	if(!Contains(_tween))
+    {
+		m_tweens.push_back(_tween);
+    }
 }
 
 //--------------------------------------------------------------------------------
-bool TweenGroup::bContains(BaseTween*  _pTween) const
+bool TweenGroup::Contains(BaseTween*  _tween) const
 {
-	std::list<BaseTween*>::const_iterator it = m_Tweens.begin();
-	while(it != m_Tweens.end())
+	std::list<BaseTween*>::const_iterator it = m_tweens.begin();
+	while(it != m_tweens.end())
 	{
-		if(*it == _pTween)
+		if(*it == _tween)
+        {
 			return true;
+        }
 
 		it++;
 	}
@@ -47,13 +51,15 @@ bool TweenGroup::bContains(BaseTween*  _pTween) const
 }
 
 //--------------------------------------------------------------------------------
-bool TweenGroup::bContainsTarget(ITweenable* _pTarget) const
+bool TweenGroup::ContainsTarget(ITweenable* _target) const
 {
-	std::list<BaseTween*>::const_iterator it = m_Tweens.begin();
-	while(it != m_Tweens.end())
+	std::list<BaseTween*>::const_iterator it = m_tweens.begin();
+	while(it != m_tweens.end())
 	{
-		if((*it)->ContainsTarget(_pTarget))
+		if((*it)->ContainsTarget(_target))
+        {
 			return true;
+        }
 
 		it++;
 	}
@@ -62,13 +68,15 @@ bool TweenGroup::bContainsTarget(ITweenable* _pTarget) const
 }
 
 //--------------------------------------------------------------------------------
-bool TweenGroup::bContainsTarget(ITweenable* _pTarget, int _iType) const
+bool TweenGroup::ContainsTarget(ITweenable* _target, int _type) const
 {
-	std::list<BaseTween*>::const_iterator it = m_Tweens.begin();
-	while(it != m_Tweens.end())
+	std::list<BaseTween*>::const_iterator it = m_tweens.begin();
+	while(it != m_tweens.end())
 	{
-		if((*it)->ContainsTarget(_pTarget, _iType))
+		if((*it)->ContainsTarget(_target, _type))
+        {
 			return true;
+        }
 
 		it++;
 	}
@@ -78,45 +86,45 @@ bool TweenGroup::bContainsTarget(ITweenable* _pTarget, int _iType) const
 //--------------------------------------------------------------------------------
 void TweenGroup::KillAll()
 {
-	std::list<BaseTween*>::iterator it = m_Tweens.begin();
-	while(it != m_Tweens.end())
+	std::list<BaseTween*>::iterator it = m_tweens.begin();
+	while(it != m_tweens.end())
 	{
 		(*it)->Kill();
 		it++;
 	}
 }
 //--------------------------------------------------------------------------------
-void TweenGroup::KillTarget(ITweenable* _pTarget)
+void TweenGroup::KillTarget(ITweenable* _target)
 {
-	std::list<BaseTween*>::iterator it = m_Tweens.begin();
-	while(it != m_Tweens.end())
+	std::list<BaseTween*>::iterator it = m_tweens.begin();
+	while(it != m_tweens.end())
 	{
-		(*it)->KillTarget(_pTarget);
+		(*it)->KillTarget(_target);
 		it++;
 	}
 }
 //--------------------------------------------------------------------------------
-void TweenGroup::KillTarget(ITweenable* _pTarget, int _iType)
+void TweenGroup::KillTarget(ITweenable* _target, int _type)
 {
-	std::list<BaseTween*>::iterator it = m_Tweens.begin();
-	while(it != m_Tweens.end())
+	std::list<BaseTween*>::iterator it = m_tweens.begin();
+	while(it != m_tweens.end())
 	{
-		(*it)->KillTarget(_pTarget, _iType);
+		(*it)->KillTarget(_target, _type);
 		it++;
 	}
 }
 //--------------------------------------------------------------------------------
-void TweenGroup::Update(float _fDt)
+void TweenGroup::Update(float _dt)
 {
-	if(!m_Tweens.empty())
+	if(!m_tweens.empty())
 	{
-		std::list<BaseTween*>::iterator it = m_Tweens.begin();
-		while(it != m_Tweens.end())
+		std::list<BaseTween*>::iterator it = m_tweens.begin();
+		while(it != m_tweens.end())
 		{
 			BaseTween* pTween = (*it);
 			if(pTween->IsFinished())
 			{
-				it = m_Tweens.erase(it);
+				it = m_tweens.erase(it);
 			}
 			else
 				it++;
@@ -124,25 +132,25 @@ void TweenGroup::Update(float _fDt)
 	}
 
 
-	if (!m_bPaused && !m_Tweens.empty()) 
+	if (!m_isPaused && !m_tweens.empty()) 
 	{
-		_fDt *= m_fDtFactor;
+		_dt *= m_dtScale;
 
-		if (_fDt >= 0) 
+		if (_dt >= 0) 
 		{
-			std::list<BaseTween*>::iterator it = m_Tweens.begin();
-			while(it != m_Tweens.end())
+			std::list<BaseTween*>::iterator it = m_tweens.begin();
+			while(it != m_tweens.end())
 			{
-				(*it)->Update(_fDt);
+				(*it)->Update(_dt);
 				it++;
 			}
 		} 
 		else 
 		{
-			std::list<BaseTween*>::reverse_iterator it = m_Tweens.rbegin();
-			while(it != m_Tweens.rend())
+			std::list<BaseTween*>::reverse_iterator it = m_tweens.rbegin();
+			while(it != m_tweens.rend())
 			{
-				(*it)->Update(_fDt);
+				(*it)->Update(_dt);
 				it++;
 			}
 		}

@@ -12,7 +12,7 @@ namespace Tween
 //--------------------------------------------------------------------------------
 
 Manager::Manager()
-: m_bPaused(false)
+: m_isPaused(false)
 {
 
 }
@@ -20,169 +20,223 @@ Manager::Manager()
 //--------------------------------------------------------------------------------
 Manager::~Manager()
 {
-	for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
 		TweenGroup* pGroup = GetGroupByIndex(i);
 		delete pGroup;
 	}
-	m_TweenGroups.clear();
+	m_tweenGroups.clear();
 }
 
 //--------------------------------------------------------------------------------
-void Manager::Register(BaseTween* _pTween, uint8 _GroupID /* = DEFAULT_GROUP_ID */)
+void Manager::Register(BaseTween* _tween, uint8 _groupID /* = DEFAULT_GROUP_ID */)
 {
-	TweenGroup* pGroup = GetGroupByID(_GroupID);
+	TweenGroup* group = GetGroupByID(_groupID);
 
-	if(!pGroup)
+	if(!group)
 	{
-		pGroup = new TweenGroup(_GroupID);
-		if(pGroup)
-			m_TweenGroups.push_back(pGroup);
+		group = new TweenGroup(_groupID);
+		if(group)
+        {
+			m_tweenGroups.push_back(group);
+        }
 	}
 
-	if(pGroup)
+	if(group)
 	{
-		if(!pGroup->bContains(_pTween))
-			pGroup->Register(_pTween);
+		if(!group->Contains(_tween))
+        {
+			group->Register(_tween);
+        }
 	}	
 }
 
 //--------------------------------------------------------------------------------
-TweenGroup* Manager::GetGroupByID(uint8 _GroupID) const
+TweenGroup* Manager::GetGroupByID(uint8 _groupID) const
 {
-	for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
-		TweenGroup* pGroup = GetGroupByIndex(i);
-		if(pGroup->GetID() == _GroupID)
-			return pGroup;
+		TweenGroup* group = GetGroupByIndex(i);
+		if(group->GetID() == _groupID)
+        {
+			return group;
+        }
 	}
 	return NULL;
 }
 
 //--------------------------------------------------------------------------------
-TweenGroup* Manager::GetGroupByIndex(uint32 _uiIndex) const
+TweenGroup* Manager::GetGroupByIndex(uint32 _index) const
 {
-	return m_TweenGroups.at(_uiIndex);
+	return m_tweenGroups.at(_index);
 }
 
 
 //--------------------------------------------------------------------------------
-bool Manager::bContainsTarget(ITweenable* _pTarget, uint8 _GroupID /*= MAX_GROUP_ID*/) const
+bool Manager::ContainsTarget(ITweenable* _target, uint8 _groupID /*= MAX_GROUP_ID*/) const
 {
-	if(_GroupID == MAX_GROUP_ID)
+	if(_groupID == MAX_GROUP_ID)
 	{
-		for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+		for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 		{
-			TweenGroup* pGroup = GetGroupByIndex(i);
-			if(pGroup->bContainsTarget(_pTarget))
+			TweenGroup* group = GetGroupByIndex(i);
+			if(group->ContainsTarget(_target))
+            {
 				return true;
+            }
 		}
 	}
 	else
 	{
-		TweenGroup* pGroup = GetGroupByID(_GroupID);
-		if(pGroup)
-			return pGroup->bContainsTarget(_pTarget);
+		TweenGroup* group = GetGroupByID(_groupID);
+		if(group)
+        {
+			return group->ContainsTarget(_target);
+        }
 	}
 	
 	return false;
 }
 
 //--------------------------------------------------------------------------------
-bool Manager::bContainsTarget(ITweenable* _pTarget, int _iType, uint8 _GroupID /*= MAX_GROUP_ID*/) const
+bool Manager::ContainsTarget(ITweenable* _target, int _type, uint8 _groupID /*= MAX_GROUP_ID*/) const
 {
-	if(_GroupID == MAX_GROUP_ID)
+	if(_groupID == MAX_GROUP_ID)
 	{
-		for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+		for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 		{
-			TweenGroup* pGroup = GetGroupByIndex(i);
-			if(pGroup->bContainsTarget(_pTarget, _iType))
+			TweenGroup* group = GetGroupByIndex(i);
+			if(group->ContainsTarget(_target, _type))
+            {
 				return true;
+            }
 		}
 	}
 	else
 	{
-		TweenGroup* pGroup = GetGroupByID(_GroupID);
-		if(pGroup)
-			return pGroup->bContainsTarget(_pTarget, _iType);
+		TweenGroup* group = GetGroupByID(_groupID);
+		if(group)
+        {
+			return group->ContainsTarget(_target, _type);
+        }
 	}
 	return false;
 }
 //--------------------------------------------------------------------------------
 void Manager::KillAll()
 {
-	for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
-		TweenGroup* pGroup = GetGroupByIndex(i);
-		pGroup->KillAll();
+		TweenGroup* group = GetGroupByIndex(i);
+		group->KillAll();
 	}
 }
 //--------------------------------------------------------------------------------
-void Manager::KillTarget(ITweenable* _pTarget, uint8 _GroupID /*= MAX_GROUP_ID*/)
+void Manager::KillTarget(ITweenable* _target, uint8 _groupID /*= MAX_GROUP_ID*/)
 {
-	if(_GroupID == MAX_GROUP_ID)
+	if(_groupID == MAX_GROUP_ID)
 	{
-		for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+		for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 		{
-			TweenGroup* pGroup = GetGroupByIndex(i);
-			pGroup->KillTarget(_pTarget);
+			TweenGroup* group = GetGroupByIndex(i);
+			group->KillTarget(_target);
 		}
 	}
 	else
 	{
-		TweenGroup* pGroup = GetGroupByID(_GroupID);
-		if(pGroup)
-			return pGroup->KillTarget(_pTarget);
+		TweenGroup* group = GetGroupByID(_groupID);
+		if(group)
+        {
+			group->KillTarget(_target);
+        }
 	}
 }
 //--------------------------------------------------------------------------------
-void Manager::KillTarget(ITweenable* _pTarget, int _iType, uint8 _GroupID /*= MAX_GROUP_ID*/)
+void Manager::KillTarget(ITweenable* _target, int _type, uint8 _groupID /*= MAX_GROUP_ID*/)
 {
-	if(_GroupID == MAX_GROUP_ID)
+	if(_groupID == MAX_GROUP_ID)
 	{
-		for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+		for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 		{
-			TweenGroup* pGroup = GetGroupByIndex(i);
-			pGroup->KillTarget(_pTarget, _iType);
+			TweenGroup* group = GetGroupByIndex(i);
+			group->KillTarget(_target, _type);
 		}
 	}
 	else
 	{
-		TweenGroup* pGroup = GetGroupByID(_GroupID);
-		if(pGroup)
-			return pGroup->KillTarget(_pTarget, _iType);
+		TweenGroup* group = GetGroupByID(_groupID);
+		if(group)
+        {
+			return group->KillTarget(_target, _type);
+        }
 	}
 }
 
 //--------------------------------------------------------------------------------
-void Manager::SetDtFactor(float _fFactor, uint8 _GroupID /*= MAX_GROUP_ID*/)
+void Manager::SetDtScale(float _scale, uint8 _groupID /*= MAX_GROUP_ID*/)
 {
-	if(_GroupID == MAX_GROUP_ID)
+	if(_groupID == MAX_GROUP_ID)
 	{
-		for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+		for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 		{
-			TweenGroup* pGroup = GetGroupByIndex(i);
-			pGroup->SetDtFactor(_fFactor);
+			TweenGroup* group = GetGroupByIndex(i);
+			group->SetDtScale(_scale);
 		}
 	}
 	else
 	{
-		TweenGroup* pGroup = GetGroupByID(_GroupID);
-		if(pGroup)
-			return pGroup->SetDtFactor(_fFactor);
+		TweenGroup* group = GetGroupByID(_groupID);
+		if(group)
+        {
+			group->SetDtScale(_scale);
+        }
 	}
 }
 
 //--------------------------------------------------------------------------------
-void Manager::Update(float _fDt)
+void Manager::Pause(uint8 _groupID /*= MAX_GROUP_ID*/)	
+{ 
+    if(_groupID == MAX_GROUP_ID)
+    {
+        m_isPaused = true; 
+    }
+    else
+    {
+        TweenGroup* group = GetGroupByID(_groupID);
+        if(group)
+        {
+            group->Pause();
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------
+void Manager::Resume(uint8 _groupID /*= MAX_GROUP_ID*/)
+{ 
+    if(_groupID == MAX_GROUP_ID)
+    {
+        m_isPaused = false; 
+    }
+    else
+    {
+        TweenGroup* group = GetGroupByID(_groupID);
+        if(group)
+        {
+            group->Resume();
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------
+void Manager::Update(float _dt)
 {
-	if(m_bPaused)
+	if(m_isPaused)
 		return;
 
-	for(size_t i = 0; i < m_TweenGroups.size(); ++i)
+	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
-		TweenGroup* pGroup = GetGroupByIndex(i);
-		pGroup->Update(_fDt);
+		TweenGroup* group = GetGroupByIndex(i);
+		group->Update(_dt);
 	}
 }
 
