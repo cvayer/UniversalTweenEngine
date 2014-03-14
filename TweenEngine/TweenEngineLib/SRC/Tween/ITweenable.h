@@ -13,9 +13,9 @@ namespace Tween
 class ITweenable
 {
 protected :
-	virtual void	_GetValues			(int _Type,				float* _ReturnValues,		uint8 _ucArraySize)	const	= 0;
-	virtual void	_SetValues			(int _Type,		const	float* _NewValues,			uint8 _ucArraySize)			= 0;
-	virtual int		_GetValuesCount		(int _Type)																const	= 0;
+	virtual void	GetValues			(int _type,				float* _returnValues,		uint8 _arraySize)	const	= 0;
+	virtual void	SetValues			(int _type,		const	float* _newValues,			uint8 _arraySize)			= 0;
+	virtual int		GetValuesCount		(int _type)																const	= 0;
 
 public : 
 	friend class BaseTween;

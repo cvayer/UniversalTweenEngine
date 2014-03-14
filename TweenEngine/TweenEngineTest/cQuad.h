@@ -24,9 +24,9 @@ public :
 	};
 
 
-	virtual void	_GetValues			(int _Type,				float* _ReturnValues,		Tween::uint8 _ucArraySize)	const;
-	virtual void	_SetValues			(int _Type,		const	float* _NewValues,			Tween::uint8 _ucArraySize)		 ;
-	virtual int		_GetValuesCount		(int _Type) const ;
+	virtual void	GetValues			(int _Type,				float* _ReturnValues,		Tween::uint8 _ucArraySize)	const;
+	virtual void	SetValues			(int _Type,		const	float* _NewValues,			Tween::uint8 _ucArraySize)		 ;
+	virtual int		GetValuesCount		(int _Type) const ;
 
 	void Render();
 

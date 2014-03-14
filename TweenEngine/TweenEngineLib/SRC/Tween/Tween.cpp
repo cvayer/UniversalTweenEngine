@@ -82,7 +82,7 @@ Tween* Tween::Setup(ITweenable* _pTarget, int _iType, float _fDuration)
 
 		if(m_pTarget)
         {
-			m_ucCombinedAttributesCount = m_pTarget->_GetValuesCount(_iType);
+			m_ucCombinedAttributesCount = m_pTarget->GetValuesCount(_iType);
         }
         else
         {
@@ -256,7 +256,7 @@ void Tween::Free()
 }
 
 //--------------------------------------------------------------------------------
-void Tween::_Build() 
+void Tween::OnBuild() 
 { 
 }
 
@@ -270,7 +270,7 @@ void Tween::OnInitialize()
 	m_fAttributesBuffer.assign(m_ucCombinedAttributesCount, 0.0f);
 	m_fWaypointsBuffer.assign((2 + m_ucWaypointsCount) * m_ucCombinedAttributesCount, 0.0f);
 
-	m_pTarget->_GetValues(m_iType, &m_fStartValues[0], m_ucCombinedAttributesCount);
+	m_pTarget->GetValues(m_iType, &m_fStartValues[0], m_ucCombinedAttributesCount);
 
 	for(int i=0; i < m_ucCombinedAttributesCount; ++i)
 	{
@@ -292,7 +292,7 @@ void Tween::OnInitialize()
 }
 
 //--------------------------------------------------------------------------------
-void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)
+void Tween::OnUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)
 {
 	if(!m_pTarget || !m_pEasing)
 	{
@@ -303,13 +303,13 @@ void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, f
 
 	if(!_bIsIterationStep && _iStep > _iLastStep)
 	{
-		m_pTarget->_SetValues(m_iType, IsReverse(_iLastStep) ? &(m_fStartValues[0]) : &(m_fTargetValues[0]), m_ucCombinedAttributesCount );
+		m_pTarget->SetValues(m_iType, IsReverse(_iLastStep) ? &(m_fStartValues[0]) : &(m_fTargetValues[0]), m_ucCombinedAttributesCount );
 		return;
 	}
 
 	if(!_bIsIterationStep && _iStep < _iLastStep)
 	{
-		m_pTarget->_SetValues(m_iType, IsReverse(_iLastStep) ? &(m_fTargetValues[0]) : &(m_fStartValues[0]), m_ucCombinedAttributesCount );
+		m_pTarget->SetValues(m_iType, IsReverse(_iLastStep) ? &(m_fTargetValues[0]) : &(m_fStartValues[0]), m_ucCombinedAttributesCount );
 		return;
 	}
 
@@ -321,13 +321,13 @@ void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, f
 
 	if(m_duration < eqZero && _fDt > -eqZero)
 	{
-		m_pTarget->_SetValues(m_iType, IsReverse(_iStep) ? &(m_fTargetValues[0]) :  &(m_fStartValues[0]), m_ucCombinedAttributesCount);
+		m_pTarget->SetValues(m_iType, IsReverse(_iStep) ? &(m_fTargetValues[0]) :  &(m_fStartValues[0]), m_ucCombinedAttributesCount);
 		return;
 	}
 
 	if(m_duration < eqZero && _fDt < eqZero)
 	{
-		m_pTarget->_SetValues(m_iType, IsReverse(_iStep) ? &(m_fStartValues[0]) :  &(m_fTargetValues[0]), m_ucCombinedAttributesCount);
+		m_pTarget->SetValues(m_iType, IsReverse(_iStep) ? &(m_fStartValues[0]) :  &(m_fTargetValues[0]), m_ucCombinedAttributesCount);
 		return;
 	}
 
@@ -358,21 +358,21 @@ void Tween::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, f
 		}
 	}
 
-	m_pTarget->_SetValues(m_iType,&(m_fAttributesBuffer[0]), m_ucCombinedAttributesCount);
+	m_pTarget->SetValues(m_iType,&(m_fAttributesBuffer[0]), m_ucCombinedAttributesCount);
 }
 
 //--------------------------------------------------------------------------------
 void Tween::ForceStartValues()
 {
 	if(m_pTarget)
-		m_pTarget->_SetValues(m_iType,&(m_fStartValues[0]), m_ucCombinedAttributesCount);
+		m_pTarget->SetValues(m_iType,&(m_fStartValues[0]), m_ucCombinedAttributesCount);
 }
 
 //--------------------------------------------------------------------------------
 void Tween::ForceEndValues()													
 {
 	if(m_pTarget)
-		m_pTarget->_SetValues(m_iType,&(m_fTargetValues[0]), m_ucCombinedAttributesCount);
+		m_pTarget->SetValues(m_iType,&(m_fTargetValues[0]), m_ucCombinedAttributesCount);
 }
 
 //--------------------------------------------------------------------------------

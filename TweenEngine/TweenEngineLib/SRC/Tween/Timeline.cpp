@@ -70,7 +70,7 @@ void Timeline::Reset()
 }
 
 //--------------------------------------------------------------------------------
-void Timeline::_Build()
+void Timeline::OnBuild()
 {
 	if (m_bIsBuilt) 
 		return;
@@ -88,7 +88,7 @@ void Timeline::_Build()
 			return;
 		}
 
-		pTween->_Build();
+		pTween->OnBuild();
 
 		float fTweenFullDUration = pTween->GetFullDuration();
 
@@ -97,7 +97,7 @@ void Timeline::_Build()
 			{
 				float fDelay = m_duration;
 				m_duration += fTweenFullDUration;
-				pTween->_Delay(fDelay);
+				pTween->OnDelay(fDelay);
 			}
 			break;
 		case eParallel:
@@ -213,14 +213,14 @@ Timeline* Timeline::End()
 }
 
 //--------------------------------------------------------------------------------
-void Timeline::_Start()
+void Timeline::OnStart()
 {
-	BaseTemplatedTween<Timeline>::_Start();
+	BaseTemplatedTween<Timeline>::OnStart();
 
 	for (size_t i=0; i<m_Children.size(); i++) 
 	{
 		BaseTween* pTween = m_Children[i];
-		pTween->_Start();
+		pTween->OnStart();
 	}
 }
 
@@ -261,7 +261,7 @@ void Timeline::_UpdateChildren(float _fDt, bool _bBackward /*= false*/)
 }
 
 //--------------------------------------------------------------------------------
-void Timeline::_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)
+void Timeline::OnUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)
 {
 	if(!_bIsIterationStep && _iStep > _iLastStep)
 	{

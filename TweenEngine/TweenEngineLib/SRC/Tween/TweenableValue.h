@@ -53,17 +53,17 @@ public :
 	}
 
 protected : 
-	virtual void		_GetValues	(int _Type, float* _ReturnValues, uint8 _ucArraySize) const
+	virtual void		GetValues	(int _Type, float* _ReturnValues, uint8 _ucArraySize) const
 	{
 		_ReturnValues[0] = (float)m_Val;
 	}
 
-	virtual void	_SetValues	(int _Type, const float* _NewValues,	uint8 _ucArraySize)
+	virtual void	SetValues	(int _Type, const float* _NewValues,	uint8 _ucArraySize)
 	{	
 		m_Val = (T)_NewValues[0];
 	}
 
-	virtual int	_GetValuesCount	(int _Type) const
+	virtual int	GetValuesCount	(int _Type) const
 	{	
 		return 1;
 	}

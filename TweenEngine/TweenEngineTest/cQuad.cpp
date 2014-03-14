@@ -42,7 +42,7 @@ void cQuad::Render()
 }
 
 //--------------------------------------------------------------------------------------
-int		cQuad::_GetValuesCount(int _Type) const 
+int		cQuad::GetValuesCount(int _Type) const 
 {
 	int returnVal = 0;
 	switch(_Type)
@@ -59,7 +59,7 @@ int		cQuad::_GetValuesCount(int _Type) const
 }
 
 //--------------------------------------------------------------------------------------
-void	cQuad::_GetValues	(int _Type,				float* _ReturnValues,		Tween::uint8 _ucArraySize)	const
+void	cQuad::GetValues	(int _Type,				float* _ReturnValues,		Tween::uint8 _ucArraySize)	const
 {
 	switch(_Type)
 	{
@@ -84,7 +84,7 @@ void	cQuad::_GetValues	(int _Type,				float* _ReturnValues,		Tween::uint8 _ucArr
 }
 
 //--------------------------------------------------------------------------------------
-void	cQuad::_SetValues			(int _Type,		const	float* _NewValues,		Tween::uint8 _ucArraySize)	
+void	cQuad::SetValues			(int _Type,		const	float* _NewValues,		Tween::uint8 _ucArraySize)	
 {
 	switch(_Type)
 	{

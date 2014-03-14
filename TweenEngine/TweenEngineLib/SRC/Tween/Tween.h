@@ -76,12 +76,12 @@ public :
 protected : 
 
 	virtual			void		Reset();
-	virtual			void		_Build();
+	virtual			void		OnBuild();
 
 protected : 
 
 	virtual			void		OnInitialize()															;
-	virtual			void		_InnerUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt);
+	virtual			void		OnUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt);
 	virtual			void		ForceStartValues	()														;
 	virtual			void		ForceEndValues		()														;
 	virtual			bool		ContainsTarget(ITweenable* _pTarget)	const								;

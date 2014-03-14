@@ -22,6 +22,7 @@ public :
 	friend class Manager;
 	friend class Timeline;
 
+            BaseTween();
 	virtual	~BaseTween() {}
 
 	inline	float		GetDelay()			const { return m_delay;		}
@@ -37,7 +38,7 @@ public :
 	inline	bool		IsPaused()			const { return m_flags.TestMask(eIsPaused);		}
 private : 
 	inline	bool		IsKilled()		    const { return m_flags.TestMask(eIsKilled);		}
-	inline	bool		IsIterationStep()	const { return m_flags.TestMask(eIsIterationStep);	}
+	inline	bool		IsIterationStep()	const { return m_flags.TestMask(eIsIteratingStep);	}
 public :
 
 	inline	void		Kill()		{ m_flags.AddMask(eIsKilled); }
@@ -49,7 +50,7 @@ public :
 	virtual void		Free()	{}
 
 protected : 
-    			        BaseTween();
+    			        
 	virtual void		ForceStartValues	()																= 0;
 	virtual void		ForceEndValues		()																= 0;
 	virtual bool		ContainsTarget(ITweenable* _target)	const										    = 0;
@@ -71,13 +72,13 @@ protected :
 
 
 	virtual void		OnInitialize	()																	{}
-	virtual void		_InnerUpdate		(int _step, int _lastStep, bool _isIterationStep, float _dt)	{}
-	virtual	void		_Build() {}
-	virtual	void		_Start();
-			void		_Start(Manager* _manager);
-			void		_Start(Manager* _manager, uint8 _groupID);
-			void		_Delay(float _delay);
-			void		_Repeat(int _count, float _delay, bool _isYoyo = false);
+	virtual void		OnUpdate		(int _step, int _lastStep, bool _isIterationStep, float _dt)	    {}
+	virtual	void		OnBuild()                                                                           {}
+	virtual	void		OnStart();
+			void		OnStart(Manager* _manager);
+			void		OnStart(Manager* _manager, uint8 _groupID);
+			void		OnDelay(float _delay);
+			void		OnRepeat(int _count, float _delay, bool _isYoyo = false);
 
 			void		OnSetListener(ITweenListener* _listener, int _ID = -1, int _triggers = ITweenListener::eComplete);
 
@@ -116,7 +117,7 @@ private :
 		eIsPaused			= (1<<3),
 		eIsKilled			= (1<<4),
 		eIsYoyo				= (1<<5),
-		eIsIterationStep	= (1<<6),
+		eIsIteratingStep	= (1<<6),
 	};
 	BitField<uint8> m_flags;
 };
@@ -142,41 +143,34 @@ public :
 
     }
 
-
-    T*	Build()
-    {
-        _Build();
-        return (T*)this;
-    }
-
     T*	Start()
     {
-        _Start();
+        OnStart();
         return (T*)this;
     }
 
     T*	Start(Manager* _pManager)
     {
-        _Start(_pManager);
+        OnStart(_pManager);
         return (T*)this;
     }
 
     T*	Start(Manager* _pManager, uint8 _GroupID)
     {
-        _Start(_pManager, _GroupID);
+        OnStart(_pManager, _GroupID);
         return (T*)this;
     }
 
     T*	Delay(float _fDelay)
     {
-        _Delay(_fDelay);
+        OnDelay(_fDelay);
         return (T*)this;
     }
 
 
     T*	Repeat(int _Count, float _fDelay, bool _bYoyo = false)
     {
-        _Repeat(_Count, _fDelay, _bYoyo);
+        OnRepeat(_Count, _fDelay, _bYoyo);
         return (T*)this;
     }
 

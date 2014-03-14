@@ -25,12 +25,14 @@ BaseTween::BaseTween()
 }
 
 //---------------------------------------------------------------------
-void BaseTween::Update(float _fDt)
+void BaseTween::Update(float _dt)
 {
 	if(!IsStarted() || IsPaused() || IsKilled())
+    {
 		return;
+    }
 
-	m_dt = _fDt;
+	m_dt = _dt;
 
 	if(!IsInit())
     {
@@ -49,17 +51,21 @@ void BaseTween::Update(float _fDt)
 }
 
 //---------------------------------------------------------------------
-void BaseTween::KillTarget(ITweenable* _pTarget)							
+void BaseTween::KillTarget(ITweenable* _target)							
 {
-	if(ContainsTarget(_pTarget))
+	if(ContainsTarget(_target))
+    {
 		Kill();
+    }
 }
 
 //---------------------------------------------------------------------
-void BaseTween::KillTarget(ITweenable* _pTarget, int _iType)							
+void BaseTween::KillTarget(ITweenable* _target, int _type)							
 {
-	if(ContainsTarget(_pTarget, _iType))
+	if(ContainsTarget(_target, _type))
+    {
 		Kill();
+    }
 }
 
 //---------------------------------------------------------------------
@@ -83,85 +89,95 @@ void BaseTween::ForceToStart()
 	m_currentTime = -m_delay;
 	m_step = -1;
 
-	m_flags.ChangeMask(eIsIterationStep, false);
+	m_flags.ChangeMask(eIsIteratingStep, false);
 
 	if(IsReverse(0))
+    {
 		ForceEndValues();
+    }
 	else
+    {
 		ForceStartValues();
+    }
 }
 
 //---------------------------------------------------------------------
-void BaseTween::ForceToEnd(float _fTime)
+void BaseTween::ForceToEnd(float _time)
 {
-	m_currentTime = _fTime - GetFullDuration();
+	m_currentTime = _time - GetFullDuration();
 	m_step = m_repeatCount*2 + 1;
-	m_flags.ChangeMask(eIsIterationStep, false);
+	m_flags.ChangeMask(eIsIteratingStep, false);
 
 	if(IsReverse(m_repeatCount*2))
+    {
 		ForceStartValues();
+    }
 	else
+    {
 		ForceEndValues();
+    }
 }
 
 //---------------------------------------------------------------------
-void BaseTween::CallCallback(ITweenListener::EEventType _eType)
+void BaseTween::CallCallback(ITweenListener::EEventType _type)
 {
-	if (m_listener && (m_listenerTriggers & _eType) > 0) 
-		m_listener->OnEvent(_eType, m_listenerID);
+	if (m_listener && (m_listenerTriggers & _type) > 0) 
+    {
+		m_listener->OnEvent(_type, m_listenerID);
+    }
 }
 
 //---------------------------------------------------------------------
-void BaseTween::_Start()
+void BaseTween::OnStart()
 {
-	_Build();
+	OnBuild();
 	m_currentTime = 0.0f;
 	m_flags.ChangeMask(eIsStarted, true);
 }
 
 //---------------------------------------------------------------------
-void BaseTween::_Start(Manager* _pManager)
+void BaseTween::OnStart(Manager* _manager)
 {
-	if(_pManager)
+	if(_manager)
 	{
-		_pManager->Register(this);
-		_Start();
+		_manager->Register(this);
+		OnStart();
 	}
 }
 
 //---------------------------------------------------------------------
-void BaseTween::_Start(Manager* _pManager, uint8 _GroupID)
+void BaseTween::OnStart(Manager* _manager, uint8 _groupID)
 {
-	if(_pManager)
+	if(_manager)
 	{
-		_pManager->Register(this, _GroupID);
-		_Start();
+		_manager->Register(this, _groupID);
+		OnStart();
 	}
 }
 
 //---------------------------------------------------------------------
-void BaseTween::_Delay(float _fDelay)
+void BaseTween::OnDelay(float _delay)
 {
-	m_delay += _fDelay;
+	m_delay += _delay;
 }
 
 //---------------------------------------------------------------------
-void BaseTween::_Repeat(int _Count, float _fDelay, bool _bYoyo /*= false*/)
+void BaseTween::OnRepeat(int _count, float _delay, bool _isYoyo /*= false*/)
 {
 	if(!IsStarted())
 	{
-		m_repeatCount = _Count;
-		m_repeatDelay = (_fDelay > 0.0f)? _fDelay : 0.0f;
-		m_flags.ChangeMask(eIsYoyo, _bYoyo);
+		m_repeatCount = _count;
+		m_repeatDelay = (_delay > 0.0f)? _delay : 0.0f;
+		m_flags.ChangeMask(eIsYoyo, _isYoyo);
 	}
 }
 
 //---------------------------------------------------------------------
-void BaseTween::OnSetListener(ITweenListener* _pListener, int _iID /* = -1 */, int _iTriggers /*= ITweenListener::eComplete*/)
+void BaseTween::OnSetListener(ITweenListener* _listener, int _ID /* = -1 */, int _triggers /*= ITweenListener::eComplete*/)
 {
-	m_listener = _pListener;
-	m_listenerTriggers = _iTriggers;
-	m_listenerID = _iID;
+	m_listener = _listener;
+	m_listenerTriggers = _triggers;
+	m_listenerID = _ID;
 }
 
 //---------------------------------------------------------------------
@@ -171,7 +187,7 @@ void BaseTween::Initialize()
 	{
 		OnInitialize();
 		m_flags.ChangeMask(eIsInit, true);
-		m_flags.ChangeMask(eIsIterationStep, true);
+		m_flags.ChangeMask(eIsIteratingStep, true);
 		m_step = 0;
 		m_dt -= (m_delay - m_currentTime);
 		m_currentTime = 0.0f;
@@ -187,7 +203,7 @@ void BaseTween::UpdateRelaunch()
 	if(!IsIterationStep()  && m_repeatCount >= 0 && m_step < 0 && m_currentTime + m_dt >= 0)
 	{
 		TWEEN_ASSERT(m_step == -1, "Step (%d) is too low, should be -1", m_step);
-		m_flags.ChangeMask(eIsIterationStep, true);
+		m_flags.ChangeMask(eIsIteratingStep, true);
 		m_step = 0;
 		float fDt = 0.0f - m_currentTime;
 		m_dt -= fDt;
@@ -195,19 +211,19 @@ void BaseTween::UpdateRelaunch()
 		
 		CallCallback(ITweenListener::eBegin);
 		CallCallback(ITweenListener::eStart);
-		_InnerUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
+		OnUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
 	}
 	else  if(!IsIterationStep() && m_repeatCount >= 0 && m_step > m_repeatCount * 2 && m_currentTime + m_dt <= 0.0f)
 	{
 		TWEEN_ASSERT(m_step != m_repeatCount*2 + 1, "Step (%d) is too big, should be %d", m_step, m_repeatCount*2 + 1);
-		m_flags.ChangeMask(eIsIterationStep, true);
+		m_flags.ChangeMask(eIsIteratingStep, true);
 		m_step = m_repeatCount *2 ;
 		float fDt = 0.0f - m_currentTime;
 		m_dt -= fDt;
 		m_currentTime = m_duration;
 		CallCallback(ITweenListener::eBackBegin);
 		CallCallback(ITweenListener::eBackStart);
-		_InnerUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
+		OnUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
 	}
 
 }
@@ -219,7 +235,7 @@ void BaseTween::UpdateStep()
 	{
 		if(!IsIterationStep() && m_currentTime + m_dt <= 0.0f)
 		{
-			m_flags.ChangeMask(eIsIterationStep, true);
+			m_flags.ChangeMask(eIsIteratingStep, true);
 			-- m_step;
 			float fDt = 0.0f - m_currentTime;
 			m_dt -= fDt;
@@ -228,27 +244,27 @@ void BaseTween::UpdateStep()
 			(IsReverse(m_step)) ? ForceStartValues() : ForceEndValues();
 
 			CallCallback(ITweenListener::eBackStart);
-			_InnerUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
+			OnUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
 		}
 		else if(!IsIterationStep() && m_currentTime + m_dt >= m_repeatDelay)
 		{
-			m_flags.ChangeMask(eIsIterationStep, true);
+			m_flags.ChangeMask(eIsIteratingStep, true);
 			++ m_step;
 			float fDt = m_repeatDelay - m_currentTime;
 			m_dt -= fDt;
 			m_currentTime = 0.0f;
 			(IsReverse(m_step)) ? ForceEndValues() : ForceStartValues();
 			CallCallback(ITweenListener::eStart);
-			_InnerUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
+			OnUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
 		}
 		else if(IsIterationStep() && m_currentTime + m_dt < 0.0f)
 		{
-			m_flags.ChangeMask(eIsIterationStep, false);
+			m_flags.ChangeMask(eIsIteratingStep, false);
 			-- m_step;
 			float fDt = 0.0f - m_currentTime;
 			m_dt -= fDt;
 			m_currentTime = 0.0f;
-			_InnerUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
+			OnUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
 			CallCallback(ITweenListener::eBackEnd);
 			if(m_step < 0 && m_repeatCount >= 0)
             {
@@ -261,13 +277,13 @@ void BaseTween::UpdateStep()
 		}
 		else if(IsIterationStep() && m_currentTime + m_dt  > m_duration)
 		{
-			m_flags.ChangeMask(eIsIterationStep, false);
+			m_flags.ChangeMask(eIsIteratingStep, false);
 			++ m_step;
 
 			float fDt = m_duration - m_currentTime;
 			m_dt -= fDt;
 			m_currentTime = m_duration;
-			_InnerUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
+			OnUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
 			CallCallback(ITweenListener::eEnd);
 			if(m_step > m_repeatCount*2 && m_repeatCount >= 0)
             {
@@ -280,7 +296,7 @@ void BaseTween::UpdateStep()
 			float fDt = m_dt;
 			m_dt -= fDt;
 			m_currentTime += fDt;
-			_InnerUpdate(m_step, m_step, IsIterationStep(), fDt);
+			OnUpdate(m_step, m_step, IsIterationStep(), fDt);
 			break;
 		}
 		else
