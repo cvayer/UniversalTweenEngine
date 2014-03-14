@@ -13,16 +13,20 @@ namespace Tween
 
 Pool<Timeline>	Timeline::s_Pool = Pool<Timeline>();
 
-void Pool<Timeline>::OnPool(Timeline* _pObject) 
+void Pool<Timeline>::OnPool(Timeline* _object) 
 {
-	if(_pObject)
-		_pObject->Reset();
+	if(_object)
+    {
+		_object->Reset();
+    }
 }
 
-void Pool<Timeline>::OnUnPool(Timeline* _pObject) 
+void Pool<Timeline>::OnUnPool(Timeline* _object) 
 {
-	if(_pObject)
-		_pObject->Reset();
+	if(_object)
+    {
+		_object->Reset();
+    }
 }
 
 //--------------------------------------------------------------------------------
@@ -44,10 +48,10 @@ Timeline* Timeline::CreateParallel()
 //--------------------------------------------------------------------------------
 Timeline::Timeline()
 : BaseTemplatedTween<Timeline>()
-, m_pCurrent(NULL)
-, m_pParent(NULL)
-, m_eMode(eSequence)
-, m_bIsBuilt(false)
+, m_current(NULL)
+, m_parent(NULL)
+, m_mode(eSequence)
+, m_isBuilt(false)
 {
 }
 
@@ -62,103 +66,103 @@ void Timeline::Reset()
 {
 	BaseTemplatedTween<Timeline>::Reset();
 
-	m_Children.clear();
-	m_pCurrent = NULL;
-	m_pParent = NULL;
-	m_bIsBuilt = false;
-	m_eMode = eSequence;
+	m_children.clear();
+	m_current = NULL;
+	m_parent = NULL;
+	m_isBuilt = false;
+	m_mode = eSequence;
 }
 
 //--------------------------------------------------------------------------------
 void Timeline::OnBuild()
 {
-	if (m_bIsBuilt) 
+	if (m_isBuilt) 
 		return;
 
 	m_duration = 0.0f;
 
-	for (size_t i=0; i<m_Children.size(); i++) 
+	for (size_t i=0; i<m_children.size(); i++) 
 	{
-		BaseTween* pTween = m_Children[i];
+		BaseTween* tween = m_children[i];
 
 		
-		if (pTween->GetRepeatCount() < 0) 
+		if (tween->GetRepeatCount() < 0) 
 		{
-			TWEEN_ASSERT(pTween->GetRepeatCount() < 0, "You can't push an object with infinite repetitions in a timeline");
+			TWEEN_ASSERT(tween->GetRepeatCount() < 0, "You can't push an object with infinite repetitions in a timeline");
 			return;
 		}
 
-		pTween->OnBuild();
+		tween->OnBuild();
 
-		float fTweenFullDUration = pTween->GetFullDuration();
+		float tweenFullDuration = tween->GetFullDuration();
 
-		switch (m_eMode) {
+		switch (m_mode) {
 		case eSequence:
 			{
 				float fDelay = m_duration;
-				m_duration += fTweenFullDUration;
-				pTween->OnDelay(fDelay);
+				m_duration += tweenFullDuration;
+				tween->OnDelay(fDelay);
 			}
 			break;
 		case eParallel:
-			m_duration = (m_duration > fTweenFullDUration)? m_duration : fTweenFullDUration;
+			m_duration = (m_duration > tweenFullDuration)? m_duration : tweenFullDuration;
 			break;
 		}
 	}
 
-	m_bIsBuilt = true;
+	m_isBuilt = true;
 	return;
 }
 
 //--------------------------------------------------------------------------------
-Timeline* Timeline::Setup(ETimelineMode _eMode)
+Timeline* Timeline::Setup(ETimelineMode _mode)
 {
-	m_eMode = _eMode;
-	m_pCurrent = this;
+	m_mode = _mode;
+	m_current = this;
 	return this;
 }
 
 //--------------------------------------------------------------------------------
-Timeline* Timeline::Push(Tween* _pTween)
+Timeline* Timeline::Push(Tween* _tween)
 {
-	TWEEN_ASSERT(_pTween, "Trying to push a null timeline");
-	TWEEN_ASSERT(!m_bIsBuilt, "You can't push anything to a timeline once it is started/built");
-	TWEEN_ASSERT(m_pCurrent, "Timeline doesn't have a current timeline, push failed");
+	TWEEN_ASSERT(_tween, "Trying to push a null timeline");
+	TWEEN_ASSERT(!m_isBuilt, "You can't push anything to a timeline once it is started/built");
+	TWEEN_ASSERT(m_current, "Timeline doesn't have a current timeline, push failed");
 
-	if(!m_bIsBuilt && m_pCurrent && _pTween)
+	if(!m_isBuilt && m_current && _tween)
 	{
-		m_pCurrent->m_Children.push_back(_pTween);
+		m_current->m_children.push_back(_tween);
 	}
 
 	return this;
 }
 
 //--------------------------------------------------------------------------------
-Timeline* Timeline::Push(Timeline* _pTimeline)
+Timeline* Timeline::Push(Timeline* _timeline)
 {
-	TWEEN_ASSERT(!m_bIsBuilt, "You can't push anything to a timeline once it is started/built");
-	TWEEN_ASSERT(m_pCurrent, "Timeline doesn't have a current timeline, push failed");
-	TWEEN_ASSERT(_pTimeline, "Trying to push a null timeline");
+	TWEEN_ASSERT(!m_isBuilt, "You can't push anything to a timeline once it is started/built");
+	TWEEN_ASSERT(m_current, "Timeline doesn't have a current timeline, push failed");
+	TWEEN_ASSERT(_timeline, "Trying to push a null timeline");
 
-	if(!m_bIsBuilt && _pTimeline && m_pCurrent)
+	if(!m_isBuilt && _timeline && m_current)
 	{
-		TWEEN_ASSERT(_pTimeline->m_pCurrent == _pTimeline, "Begin()/End() count is not correct"); 
+		TWEEN_ASSERT(_timeline->m_current == _timeline, "Begin()/End() count is not correct"); 
 
-		_pTimeline->m_pParent = m_pCurrent;
-		m_pCurrent->m_Children.push_back(_pTimeline);
+		_timeline->m_parent = m_current;
+		m_current->m_children.push_back(_timeline);
 	}
 
 	return this;
 }
 
 //--------------------------------------------------------------------------------
-Timeline* Timeline::PushPause(float _fTime)
+Timeline* Timeline::PushPause(float _time)
 {
-	TWEEN_ASSERT(!m_bIsBuilt, "You can't push anything to a timeline once it is started/built");
-	TWEEN_ASSERT(m_pCurrent, "Timeline doesn't have a current timeline, pushPause failed");
-	if(m_pCurrent && !m_bIsBuilt)
+	TWEEN_ASSERT(!m_isBuilt, "You can't push anything to a timeline once it is started/built");
+	TWEEN_ASSERT(m_current, "Timeline doesn't have a current timeline, pushPause failed");
+	if(m_current && !m_isBuilt)
 	{
-		m_pCurrent->m_Children.push_back(Tween::Mark()->Delay(_fTime));
+		m_current->m_children.push_back(Tween::Mark()->Delay(_time));
 	}
 	return this;
 }
@@ -166,47 +170,43 @@ Timeline* Timeline::PushPause(float _fTime)
 //--------------------------------------------------------------------------------
 Timeline* Timeline::BeginSequence()
 {
-
-	TWEEN_ASSERT(!m_bIsBuilt, "You can't push anything to a timeline once it is started/built");
-	TWEEN_ASSERT(m_pCurrent, "Timeline doesn't have a current timeline");
-	if(!m_bIsBuilt && m_pCurrent)
-	{
-		Timeline* timeline = s_Pool.Get();
-		timeline->m_pParent = m_pCurrent;
-		timeline->m_eMode = eSequence;
-		m_pCurrent->m_Children.push_back(timeline);
-		m_pCurrent = timeline;
-	}
+    Begin(eSequence);
 	return this;
 }
 
 //--------------------------------------------------------------------------------
 Timeline* Timeline::BeginParallel()
 {
-	TWEEN_ASSERT(!m_bIsBuilt, "You can't push anything to a timeline once it is started/built");
-	TWEEN_ASSERT(m_pCurrent, "Timeline doesn't have a current timeline");
-
-	if(!m_bIsBuilt && m_pCurrent)
-	{
-		Timeline* timeline = s_Pool.Get();
-		timeline->m_pParent = m_pCurrent;
-		timeline->m_eMode = eParallel;
-		m_pCurrent->m_Children.push_back(timeline);
-		m_pCurrent = timeline;
-	}
+    Begin(eParallel);
 	return this;
+}
+
+//--------------------------------------------------------------------------------
+void Timeline::Begin(ETimelineMode _mode)
+{
+    TWEEN_ASSERT(!m_isBuilt, "You can't push anything to a timeline once it is started/built");
+    TWEEN_ASSERT(m_current, "Timeline doesn't have a current timeline");
+
+    if(!m_isBuilt && m_current)
+    {
+        Timeline* timeline = s_Pool.Get();
+        timeline->m_parent = m_current;
+        timeline->m_mode = _mode;
+        m_current->m_children.push_back(timeline);
+        m_current = timeline;
+    }
 }
 
 //--------------------------------------------------------------------------------
 Timeline* Timeline::End()
 {
-	TWEEN_ASSERT(!m_bIsBuilt, "You can't push anything to a timeline once it is started/built");
-	TWEEN_ASSERT(m_pCurrent, "Timeline doesn't have a current timeline");
-	TWEEN_ASSERT(m_pCurrent != this, "Too many call to End");
+	TWEEN_ASSERT(!m_isBuilt, "You can't push anything to a timeline once it is started/built");
+	TWEEN_ASSERT(m_current, "Timeline doesn't have a current timeline");
+	TWEEN_ASSERT(m_current != this, "Too many call to End");
 
-	if(!m_bIsBuilt && m_pCurrent && m_pCurrent != this)
+	if(!m_isBuilt && m_current && m_current != this)
 	{
-		m_pCurrent = m_pCurrent->m_pParent;
+		m_current = m_current->m_parent;
 	}
 
 	return this;
@@ -217,148 +217,168 @@ void Timeline::OnStart()
 {
 	BaseTemplatedTween<Timeline>::OnStart();
 
-	for (size_t i=0; i<m_Children.size(); i++) 
+	for (size_t i=0; i<m_children.size(); i++) 
 	{
-		BaseTween* pTween = m_Children[i];
-		pTween->OnStart();
+		BaseTween* tween = m_children[i];
+		tween->OnStart();
 	}
 }
 
 //--------------------------------------------------------------------------------
 void Timeline::Free()	
 { 
-	for (size_t i=0; i<m_Children.size(); i++) 
+	for (size_t i=0; i<m_children.size(); i++) 
 	{
-		BaseTween* pTween = m_Children[i];
-		pTween->Free();
+		BaseTween* tween = m_children[i];
+		tween->Free();
 	}
 
 	s_Pool.Free(this);
 }
 
 //--------------------------------------------------------------------------------
-void Timeline::_UpdateChildren(float _fDt, bool _bBackward /*= false*/)
+void Timeline::UpdateChildren(float _dt, bool _isBackward /*= false*/)
 {
-	size_t iSize = m_Children.size();
-	if(!_bBackward)
+	size_t iSize = m_children.size();
+	if(!_isBackward)
 	{
 		for (size_t i = 0; i < iSize; ++i) 
 		{
-			BaseTween* pTween = m_Children[i];
-			pTween->Update(_fDt);
+			BaseTween* pTween = m_children[i];
+			pTween->Update(_dt);
 		}
 	}
 	else
 	{
 		for (size_t i = iSize-1 ; i >= 0 ; --i) 
 		{
-			BaseTween* pTween = m_Children[i];
-			pTween->Update(_fDt);
+			BaseTween* pTween = m_children[i];
+			pTween->Update(_dt);
 			if(i == 0) 			// We break if i == 0 because as i is unsigned, if we -- it, it will be positive again and the loop become infinite
+            {
 				break;
+            }
 		}
 	}
 }
 
 //--------------------------------------------------------------------------------
-void Timeline::OnUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt)
+void Timeline::OnUpdate		(int _step, int _lastStep, bool _isIterationStep, float _dt)
 {
-	if(!_bIsIterationStep && _iStep > _iLastStep)
+	if(!_isIterationStep && _step > _lastStep)
 	{
-		TWEEN_ASSERT(_fDt >= 0, "Delta should be positive");
+		TWEEN_ASSERT(_dt >= 0, "Delta should be positive");
 		
-		float fNewDelta = IsReverse(_iLastStep) ? (-_fDt - 1.0f) : (_fDt + 1.0f);
-		_UpdateChildren(fNewDelta);
+		float currentDelta = IsReverse(_lastStep) ? (-_dt - 1.0f) : (_dt + 1.0f);
+		UpdateChildren(currentDelta);
 		return;
 	}
 
-	if(!_bIsIterationStep && _iStep < _iLastStep)
+	if(!_isIterationStep && _step < _lastStep)
 	{
-		TWEEN_ASSERT(_fDt <= 0, "Delta should be positive");
-		float fNewDelta = IsReverse(_iLastStep) ? (-_fDt - 1.0f) : (_fDt + 1.0f);
-		_UpdateChildren(fNewDelta, true);
+		TWEEN_ASSERT(_dt <= 0, "Delta should be negative");
+		float currentDelta = IsReverse(_lastStep) ? (-_dt - 1.0f) : (_dt + 1.0f);
+		UpdateChildren(currentDelta, true);
 		return;
 	}
 
-	TWEEN_ASSERT(_bIsIterationStep, "Not an iteration step and last step equal to step should not happen");
+	TWEEN_ASSERT(_isIterationStep, "Not an iteration step and last step equal to step should not happen");
 
-	if(_iStep > _iLastStep)
+	if(_step > _lastStep)
 	{
-		if(IsReverse(_iStep))
+		if(IsReverse(_step))
+        {
 			ForceEndValues();
+        }
 		else
+        {
 			ForceStartValues();
+        }
 
-		_UpdateChildren(_fDt);
+		UpdateChildren(_dt);
 	}
-	else if( _iStep < _iLastStep)
+	else if( _step < _lastStep)
 	{
-		if(IsReverse(_iStep))
+		if(IsReverse(_step))
+        {
 			ForceStartValues();
+        }
 		else
+        {
 			ForceEndValues();
+        }
 
-		_UpdateChildren(_fDt, true);
+		UpdateChildren(_dt, true);
 	}
 	else
 	{
-		float fDt = IsReverse(_iStep) ? -_fDt : _fDt;
+		float currentDelta = IsReverse(_step) ? -_dt : _dt;
 
-		if(_fDt >= 0.0f)
-			_UpdateChildren(fDt);
+		if(_dt >= 0.0f)
+        {
+			UpdateChildren(currentDelta);
+        }
 		else
-			_UpdateChildren(fDt, true);
+        {
+			UpdateChildren(currentDelta, true);
+        }
 	}
 }
 
 //--------------------------------------------------------------------------------
 void Timeline::ForceStartValues	()
 {
-	size_t iSize = m_Children.size();
-	for (size_t i = iSize-1 ; i >= 0 ; --i) 
+	size_t size = m_children.size();
+	for (size_t i = size-1 ; i >= 0 ; --i) 
 	{
-		BaseTween* pTween = m_Children[i];
-		pTween->ForceToStart();
+		BaseTween* tween = m_children[i];
+		tween->ForceToStart();
 
 		// We beak if i == 0 as i is unsigned, if we -- it it will be positive again
 		if(i == 0)
+        {
 			break;
+        }
 	}
 }
 
 //--------------------------------------------------------------------------------
 void Timeline::ForceEndValues		()
 {
-	size_t iSize = m_Children.size();
-	for (size_t i = 0; i < iSize; ++i) 
+	size_t size = m_children.size();
+	for (size_t i = 0; i < size; ++i) 
 	{
-		BaseTween* pTween = m_Children[i];
-		pTween->ForceToEnd(m_duration);
+		BaseTween* tween = m_children[i];
+		tween->ForceToEnd(m_duration);
 	}
 }
 
 //--------------------------------------------------------------------------------
-bool Timeline::ContainsTarget(ITweenable* _pTarget)	const	
+bool Timeline::ContainsTarget(ITweenable* _target)	const	
 {
-	size_t iSize = m_Children.size();
+	size_t iSize = m_children.size();
 	for (size_t i = 0; i < iSize; ++i) 
 	{
-		BaseTween* pTween = m_Children[i];
-		if(pTween->ContainsTarget(_pTarget))
+		BaseTween* tween = m_children[i];
+		if(tween->ContainsTarget(_target))
+        {
 			return true;
+        }
 	}
 	return false;
 }
 
 //--------------------------------------------------------------------------------
-bool Timeline::ContainsTarget(ITweenable* _pTarget, int _iType)	const
+bool Timeline::ContainsTarget(ITweenable* _target, int _type)	const
 {
-	size_t iSize = m_Children.size();
+	size_t iSize = m_children.size();
 	for (size_t i = 0; i < iSize; ++i) 
 	{
-		BaseTween* pTween = m_Children[i];
-		if(pTween->ContainsTarget(_pTarget, _iType))
+		BaseTween* tween = m_children[i];
+		if(tween->ContainsTarget(_target, _type))
+        {
 			return true;
+        }
 	}
 	return false;
 }

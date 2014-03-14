@@ -15,63 +15,64 @@ template <class T> class TweenableValue : public ITweenable
 {
 public : 
 	TweenableValue()
-	: m_Val(0)
+	: m_val(0)
 	{
 
 	}
 
-	TweenableValue(T _Value)
-	: m_Val(_Value)
+	TweenableValue(T _value)
+	: m_val(_value)
 	{
 		
 	}
 
-	TweenableValue(const TweenableValue& _TV)
+	TweenableValue(const TweenableValue& _tweenableValue)
 	{
-		m_Val = _TV.m_Val;
+		m_val = _tweenableValue.m_val;
 	}
 
 	virtual ~TweenableValue() {}
 
 
-	TweenableValue &operator = (const TweenableValue &_TV)
+	TweenableValue &operator = (const TweenableValue &_tweenableValue)
 	{
-		m_Val = _TV.m_Val;
+		m_val = _tweenableValue.m_val;
 		return *this;
 	}
 
-	TweenableValue &operator = (const T & _Value)
+	TweenableValue &operator = (const T & _value)
 	{
-		m_Val = _Value;
+		m_val = _value;
 		return *this;
 	}
 
 	// Cast operator
 	inline  operator    T () const
 	{
-		return m_Val;
+		return m_val;
 	}
 
 protected : 
-	virtual void		GetValues	(int _Type, float* _ReturnValues, uint8 _ucArraySize) const
+	virtual void		GetValues	(int _type, float* _returnValues, uint8 _arraySize) const
 	{
-		_ReturnValues[0] = (float)m_Val;
+		_returnValues[0] = (float)m_val;
 	}
 
-	virtual void	SetValues	(int _Type, const float* _NewValues,	uint8 _ucArraySize)
+	virtual void	SetValues	(int _type, const float* _newValues,	uint8 _arraySize)
 	{	
-		m_Val = (T)_NewValues[0];
+		m_val = (T)_newValues[0];
 	}
 
-	virtual int	GetValuesCount	(int _Type) const
+	virtual int	GetValuesCount	(int _type) const
 	{	
 		return 1;
 	}
 
 protected : 
-	T m_Val;
+	T m_val;
 };
 
+typedef TweenableValue<double>	TweenableDouble;
 typedef TweenableValue<float>	TweenableFloat;
 typedef TweenableValue<int>		TweenableInt;
 

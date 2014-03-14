@@ -36,14 +36,14 @@ public :
 	Timeline();
 	virtual ~Timeline();
 
-	Timeline* Push(Tween* _pTween);
-	Timeline* Push(Timeline* _pTimeline);
+	Timeline* Push(Tween* _tween);
+	Timeline* Push(Timeline* _timeline);
 
-	Timeline* PushPause(float _fTime);
+	Timeline* PushPause(float _time);
 	Timeline* BeginSequence();
 	Timeline* BeginParallel();
 	Timeline* End();
-	Timeline* Setup(ETimelineMode _eMode); 
+	Timeline* Setup(ETimelineMode _mode); 
 
 	virtual void		 Free();
 
@@ -54,22 +54,24 @@ protected :
 	virtual	void		OnStart();
 
 
-	virtual void		OnUpdate		(int _iStep, int _iLastStep, bool _bIsIterationStep, float _fDt);
+	virtual void		OnUpdate		(int _step, int _lastStep, bool _isIterationStep, float _dt);
 	virtual void		ForceStartValues	()														;
 	virtual void		ForceEndValues		()														;
-	virtual bool		ContainsTarget(ITweenable* _pTarget)	const								;
-	virtual bool		ContainsTarget(ITweenable* _pTarget, int _iType)	const					;
+	virtual bool		ContainsTarget(ITweenable* _target)	const								;
+	virtual bool		ContainsTarget(ITweenable* _target, int _type)	const					;
+
 
 private : 
-			void		_UpdateChildren(float _fDt, bool _bBackward = false);
+            void        Begin(ETimelineMode _mode);
+			void		UpdateChildren(float _dt, bool _isBackward = false);
 
 private : 
 
-	std::vector< BaseTween* >	m_Children;
-	Timeline*					m_pCurrent;
-	Timeline*					m_pParent;
-	ETimelineMode				m_eMode;
-	bool						m_bIsBuilt;
+	std::vector< BaseTween* >	m_children;
+	Timeline*					m_current;
+	Timeline*					m_parent;
+	ETimelineMode				m_mode;
+	bool						m_isBuilt;
 
 };
 
