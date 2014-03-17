@@ -93,6 +93,21 @@ void TweenGroup::KillAll()
 		it++;
 	}
 }
+
+//--------------------------------------------------------------------------------
+void TweenGroup::KillAndFreeAll()
+{
+    std::list<BaseTween*>::iterator it = m_tweens.begin();
+    while(it != m_tweens.end())
+    {
+        BaseTween* tween = (*it);
+        tween->Kill();
+        tween->Free();
+        it++;
+    }
+    m_tweens.clear();
+}
+
 //--------------------------------------------------------------------------------
 void TweenGroup::KillTarget(ITweenable* _target)
 {
@@ -121,10 +136,11 @@ void TweenGroup::Update(float _dt)
 		std::list<BaseTween*>::iterator it = m_tweens.begin();
 		while(it != m_tweens.end())
 		{
-			BaseTween* pTween = (*it);
-			if(pTween->IsFinished())
+			BaseTween* tween = (*it);
+			if(tween->IsFinished())
 			{
 				it = m_tweens.erase(it);
+                tween->Free();
 			}
 			else
 				it++;

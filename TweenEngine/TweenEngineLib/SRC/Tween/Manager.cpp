@@ -22,8 +22,9 @@ Manager::~Manager()
 {
 	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
-		TweenGroup* pGroup = GetGroupByIndex(i);
-		delete pGroup;
+		TweenGroup* group = GetGroupByIndex(i);
+        group->KillAndFreeAll();
+		delete group;
 	}
 	m_tweenGroups.clear();
 }

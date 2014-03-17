@@ -60,7 +60,7 @@ void BaseTween::KillTarget(ITweenable* _target)
 }
 
 //---------------------------------------------------------------------
-void BaseTween::KillTarget(ITweenable* _target, int _type)							
+void BaseTween::KillTarget(ITweenable* _target, TweenType _type)							
 {
 	if(ContainsTarget(_target, _type))
     {

@@ -26,6 +26,7 @@ public :
 			bool ContainsTarget(ITweenable* _target) const;
 			bool ContainsTarget(ITweenable* _target, int _type) const;
 			void KillAll();
+            void KillAndFreeAll();
 			void KillTarget(ITweenable* _target);
 			void KillTarget(ITweenable* _target, int _type);
 	inline	void Pause()	{ m_isPaused = true; }

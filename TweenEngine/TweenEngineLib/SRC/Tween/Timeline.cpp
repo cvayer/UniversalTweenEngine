@@ -369,7 +369,7 @@ bool Timeline::ContainsTarget(ITweenable* _target)	const
 }
 
 //--------------------------------------------------------------------------------
-bool Timeline::ContainsTarget(ITweenable* _target, int _type)	const
+bool Timeline::ContainsTarget(ITweenable* _target, TweenType _type)	const
 {
 	size_t iSize = m_children.size();
 	for (size_t i = 0; i < iSize; ++i) 

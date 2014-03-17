@@ -54,10 +54,10 @@ protected :
 	virtual void		ForceStartValues	()																= 0;
 	virtual void		ForceEndValues		()																= 0;
 	virtual bool		ContainsTarget(ITweenable* _target)	const										    = 0;
-	virtual bool		ContainsTarget(ITweenable* _target, int _type) const							    = 0;
+	virtual bool		ContainsTarget(ITweenable* _target, TweenType _type) const							= 0;
 
 			void		KillTarget(ITweenable* _target);
-			void		KillTarget(ITweenable* _target, int _type);
+			void		KillTarget(ITweenable* _target, TweenType _type);
 
 	virtual	void		Reset();
 

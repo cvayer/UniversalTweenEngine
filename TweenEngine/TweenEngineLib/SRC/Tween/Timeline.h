@@ -58,7 +58,7 @@ protected :
 	virtual void		ForceStartValues	()														;
 	virtual void		ForceEndValues		()														;
 	virtual bool		ContainsTarget(ITweenable* _target)	const								;
-	virtual bool		ContainsTarget(ITweenable* _target, int _type)	const					;
+	virtual bool		ContainsTarget(ITweenable* _target, TweenType _type)	const					;
 
 
 private : 
