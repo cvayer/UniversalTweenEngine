@@ -1,6 +1,8 @@
 #ifndef __CTWEENCALLBACK__H__
 #define __CTWEENCALLBACK__H__
 
+#include "TweenDefines.h"
+
 namespace Tween
 {
 //--------------------------------------------------------------------------------
@@ -36,22 +38,53 @@ public :
 	friend class BaseTween;
 	virtual ~ITweenListener() {}
 
-	enum EEventType
-	{
-		eBegin			= 1<<0, 
-		eStart			= 1<<1, 
-		eEnd			= 1<<2, 
-		eComplete		= 1<<3, 
-		eBackBegin		= 1<<4, 
-		eBackStart		= 1<<5,
-		eBackEnd		= 1<<6,
-		eBackComplete	= 1<<7,
-		eAnyForward		= 0x0F,
-		eAnyBackward	= 0xF0,
-		eAll			= 0xFF,
-	};
+    static const char * GetTweenEventTypeName(ETweenEventType _type)                  
+    { 
+        const char* name = NULL;
+        switch(_type)
+        {
+        case eTweenBegin: 
+            name = "eBegin";
+            break;
+        case eTweenStart: 
+            name = "eStart";
+            break;
+        case eTweenEnd: 
+            name = "eEnd";
+            break;
+        case eTweenComplete: 
+            name = "eComplete";
+            break;
+        case eTweenBackStart: 
+            name = "eBackStart";
+            break;
+        case eTweenBackEnd: 
+            name = "eBackEnd";
+            break;
+        case eTweenBackComplete: 
+            name = "eBackComplete";
+            break;
+        case eTweenAnyForward: 
+            name = "eTweenAnyForward";
+            break;
+        case eTweenAnyBackward: 
+            name = "eTweenAnyBackward";
+            break;
+        case eTweenAll: 
+            name = "eTweenAll";
+            break;
+        default : 
+            break;
+        }
+        return name;
+    }
 
-	virtual void OnEvent(EEventType _type, int _tweenID) = 0;
+    static bool ContainsType(ETweenEventType _type, TweenListenerFlags _flags)
+    {
+        return ((_flags & _type) != 0);
+    }
+
+	virtual void OnEvent(ETweenEventType _type, TweenListenerID _tweenID) = 0;
 };
 
 } // Namespace Tween

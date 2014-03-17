@@ -53,17 +53,17 @@ public :
 	}
 
 protected : 
-	virtual void		GetValues	(int _type, float* _returnValues, uint8 _arraySize) const
+	virtual void		GetValues	(TweenType _type, float* _returnValues, uint8 _arraySize) const
 	{
 		_returnValues[0] = (float)m_val;
 	}
 
-	virtual void	SetValues	(int _type, const float* _newValues,	uint8 _arraySize)
+	virtual void	SetValues	(TweenType _type, const float* _newValues,	uint8 _arraySize)
 	{	
 		m_val = (T)_newValues[0];
 	}
 
-	virtual int	GetValuesCount	(int _type) const
+	virtual int	GetValuesCount	(TweenType _type) const
 	{	
 		return 1;
 	}

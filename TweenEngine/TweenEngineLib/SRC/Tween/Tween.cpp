@@ -36,7 +36,7 @@ void Pool<Tween>::OnUnPool(Tween* _object)
 //--------------------------------------------------------------------------------
 Tween::Tween()
 : BaseTemplatedTween<Tween>()
-, m_type(InvalidType)
+, m_type(InvalidTweenType)
 , m_easing(NULL)
 , m_path(NULL)
 , m_isFrom(false)
@@ -58,7 +58,7 @@ void Tween::Reset()
 {
 	BaseTemplatedTween<Tween>::Reset();
 
-	m_type = InvalidType;
+	m_type = InvalidTweenType;
 	m_easing = NULL;
 	m_path = NULL;
 	m_target = NULL;
@@ -135,7 +135,7 @@ Tween* Tween::Call(ITweenListener* _callBack)
 	Tween* tween = s_Pool.Get();
 	if(tween)
 	{
-		tween->Setup(NULL, InvalidType, 0.0f)->SetListener(_callBack, -1, ITweenListener::eBegin);
+		tween->Setup(NULL, InvalidTweenType, 0.0f)->SetListener(_callBack, -1, eTweenBegin);
 	}
 	return tween;
 }
@@ -146,7 +146,7 @@ Tween* Tween::Mark()
 	Tween* tween = s_Pool.Get();
 	if(tween)
 	{
-		tween->Setup(NULL, InvalidType, 0.0f);
+		tween->Setup(NULL, InvalidTweenType, 0.0f);
 	}
 	return tween;
 }

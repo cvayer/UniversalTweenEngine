@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "BaseTween.h"
-#include "Manager.h"
+#include "TweenManager.h"
 
 namespace Tween
 {
@@ -17,7 +17,7 @@ BaseTween::BaseTween()
 , m_step(-2)
 , m_repeatCount(0)
 , m_listener(NULL)
-, m_listenerTriggers(0)
+, m_listenerFlags(0)
 , m_listenerID(0)
 , m_dt(0.0f)
 {
@@ -119,9 +119,9 @@ void BaseTween::ForceToEnd(float _time)
 }
 
 //---------------------------------------------------------------------
-void BaseTween::CallCallback(ITweenListener::EEventType _type)
+void BaseTween::CallCallback(ETweenEventType _type)
 {
-	if (m_listener && (m_listenerTriggers & _type) > 0) 
+	if (m_listener && ITweenListener::ContainsType(_type, m_listenerFlags)) 
     {
 		m_listener->OnEvent(_type, m_listenerID);
     }
@@ -136,7 +136,7 @@ void BaseTween::OnStart()
 }
 
 //---------------------------------------------------------------------
-void BaseTween::OnStart(Manager* _manager)
+void BaseTween::OnStart(TweenManager* _manager)
 {
 	if(_manager)
 	{
@@ -146,7 +146,7 @@ void BaseTween::OnStart(Manager* _manager)
 }
 
 //---------------------------------------------------------------------
-void BaseTween::OnStart(Manager* _manager, uint8 _groupID)
+void BaseTween::OnStart(TweenManager* _manager, uint8 _groupID)
 {
 	if(_manager)
 	{
@@ -173,10 +173,10 @@ void BaseTween::OnRepeat(int _count, float _delay, bool _isYoyo /*= false*/)
 }
 
 //---------------------------------------------------------------------
-void BaseTween::OnSetListener(ITweenListener* _listener, int _ID /* = -1 */, int _triggers /*= ITweenListener::eComplete*/)
+void BaseTween::OnSetListener(ITweenListener* _listener, TweenListenerID _ID /* = InvalidTweenListenerID */, TweenListenerFlags _flags /*= eComplete*/)
 {
 	m_listener = _listener;
-	m_listenerTriggers = _triggers;
+	m_listenerFlags = _flags;
 	m_listenerID = _ID;
 }
 
@@ -191,8 +191,8 @@ void BaseTween::Initialize()
 		m_step = 0;
 		m_dt -= (m_delay - m_currentTime);
 		m_currentTime = 0.0f;
-		CallCallback(ITweenListener::eBegin);
-		CallCallback(ITweenListener::eStart);
+		CallCallback(eTweenBegin);
+		CallCallback(eTweenStart);
 	}
 }
 
@@ -209,8 +209,8 @@ void BaseTween::UpdateRelaunch()
 		m_dt -= fDt;
 		m_currentTime = 0.0f;
 		
-		CallCallback(ITweenListener::eBegin);
-		CallCallback(ITweenListener::eStart);
+		CallCallback(eTweenBegin);
+		CallCallback(eTweenStart);
 		OnUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
 	}
 	else  if(!IsIterationStep() && m_repeatCount >= 0 && m_step > m_repeatCount * 2 && m_currentTime + m_dt <= 0.0f)
@@ -221,8 +221,8 @@ void BaseTween::UpdateRelaunch()
 		float fDt = 0.0f - m_currentTime;
 		m_dt -= fDt;
 		m_currentTime = m_duration;
-		CallCallback(ITweenListener::eBackBegin);
-		CallCallback(ITweenListener::eBackStart);
+		CallCallback(eTweenBackBegin);
+		CallCallback(eTweenBackStart);
 		OnUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
 	}
 
@@ -243,7 +243,7 @@ void BaseTween::UpdateStep()
 
 			(IsReverse(m_step)) ? ForceStartValues() : ForceEndValues();
 
-			CallCallback(ITweenListener::eBackStart);
+			CallCallback(eTweenBackStart);
 			OnUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
 		}
 		else if(!IsIterationStep() && m_currentTime + m_dt >= m_repeatDelay)
@@ -254,7 +254,7 @@ void BaseTween::UpdateStep()
 			m_dt -= fDt;
 			m_currentTime = 0.0f;
 			(IsReverse(m_step)) ? ForceEndValues() : ForceStartValues();
-			CallCallback(ITweenListener::eStart);
+			CallCallback(eTweenStart);
 			OnUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
 		}
 		else if(IsIterationStep() && m_currentTime + m_dt < 0.0f)
@@ -265,10 +265,10 @@ void BaseTween::UpdateStep()
 			m_dt -= fDt;
 			m_currentTime = 0.0f;
 			OnUpdate(m_step, m_step + 1, IsIterationStep(), fDt);
-			CallCallback(ITweenListener::eBackEnd);
+			CallCallback(eTweenBackEnd);
 			if(m_step < 0 && m_repeatCount >= 0)
             {
-				CallCallback(ITweenListener::eBackComplete);
+				CallCallback(eTweenBackComplete);
             }
 			else 
             {
@@ -284,10 +284,10 @@ void BaseTween::UpdateStep()
 			m_dt -= fDt;
 			m_currentTime = m_duration;
 			OnUpdate(m_step, m_step - 1, IsIterationStep(), fDt);
-			CallCallback(ITweenListener::eEnd);
+			CallCallback(eTweenEnd);
 			if(m_step > m_repeatCount*2 && m_repeatCount >= 0)
             {
-				CallCallback(ITweenListener::eComplete);
+				CallCallback(eTweenComplete);
             }
 			m_currentTime = 0.0f;
 		}

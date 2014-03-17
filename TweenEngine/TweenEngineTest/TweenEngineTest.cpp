@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 #include "Tween/Easing.h"
-#include "Tween/Manager.h"
+#include "Tween/TweenManager.h"
 #include "Tween/Tween.h"
 #include "Tween/Timeline.h"
 #include "Tween/TweenableValue.h"
@@ -40,7 +40,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	float fDTFactor = 1.0f;
 
-	Tween::Manager manager;
+	Tween::TweenManager manager;
 
 	float fHalfSize = 0.05f;
 
@@ -53,11 +53,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	cMyTweenListener listener;
 
 
-	tweenX.Setup(&X, Tween::InvalidType , 2.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(-0.8f)->Repeat(Tween::Infinity, 0.5f, true)->Start(&manager);
+	tweenX.Setup(&X, Tween::InvalidTweenType , 2.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(-0.8f)->Repeat(Tween::Infinity, 0.5f, true)->Start(&manager);
 
-	tweenY.Setup(&Y, Tween::InvalidType, 0.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(0.5f)->Start(&manager);
+	tweenY.Setup(&Y, Tween::InvalidTweenType, 0.0f)->Ease(&(Tween::Easing::BOUNCE_OUT))->Target(0.5f)->Start(&manager);
 
-	tweenRotation.Setup(&Rotation, Tween::InvalidType, 1.5f)->Ease(&(Tween::Easing::CUBIC_INOUT))->Target(360.0f)->Delay(0.5f)->Repeat(Tween::Infinity, 0.5f, true)->SetListener(&listener, 1, Tween::ITweenListener::eAll)->Start();
+	tweenRotation.Setup(&Rotation, Tween::InvalidTweenType, 1.5f)->Ease(&(Tween::Easing::CUBIC_INOUT))->Target(360.0f)->Delay(0.5f)->Repeat(Tween::Infinity, 0.5f, true)->SetListener(&listener, 1, Tween::eTweenAll)->Start();
 
 
 	cQuad quad1;
@@ -73,11 +73,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Tween::Tween tweenQuad1Position;
 	tweenQuad1Position.Setup(&quad1, cQuad::eTweenPosition, 2.0f);
-	tweenQuad1Position.Ease(&(Tween::Easing::QUAD_INOUT))->SetPath(&(Tween::Path::LINEAR))->Target(0.6f, -0.9f )->Waypoint(0.0f, -0.3f)->Waypoint(0.9f, -0.6f)->Repeat(-1, 0.5f, true)->Start(&manager);
+	tweenQuad1Position.Ease(&(Tween::Easing::QUAD_INOUT))->SetPath(&(Tween::Path::LINEAR))->Target(0.6f, -0.9f )->Waypoint(0.0f, -0.3f)->Waypoint(0.9f, -0.6f)->Repeat(Tween::Infinity, 0.5f, true)->Start(&manager);
 
 	Tween::Tween tweenQuad1Color;
 	tweenQuad1Color.Setup(&quad1, cQuad::eTweenColor, 0.5f);
-	tweenQuad1Color.Ease(&(Tween::Easing::CIRC_INOUT))->Target(0.0f, 0.0f, 0.0f )->Repeat(-1, 0.0f, true)->Start(&manager);
+	tweenQuad1Color.Ease(&(Tween::Easing::CIRC_INOUT))->Target(0.0f, 0.0f, 0.0f )->Repeat(Tween::Infinity, 0.0f, true)->Start(&manager);
 
 	Tween::Timeline::CreateSequence()
 		->Push(Tween::Tween::To(&quad3, cQuad::eTweenPosition, 1.0f)->Target(0.0f, 0.0f))
@@ -94,7 +94,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		->Start(&manager,1);
 		
 	
-	Tween::Tween::To(&quad2, cQuad::eTweenRotation, 1.0f)->Ease(&(Tween::Easing::ELASTIC_OUT))->Target(360.0f)->Repeat(4, 0.2f, true)->SetListener(&listener, 0, Tween::ITweenListener::eAll)->Start(&manager, 1);
+	Tween::Tween::To(&quad2, cQuad::eTweenRotation, 1.0f)->Ease(&(Tween::Easing::ELASTIC_OUT))->Target(360.0f)->Repeat(4, 0.2f, true)->SetListener(&listener, 0, Tween::eTweenAll)->Start(&manager, 1);
 
 	Tween::Tween::Call(&listener);
 

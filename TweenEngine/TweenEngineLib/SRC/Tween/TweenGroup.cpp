@@ -10,7 +10,7 @@ namespace Tween
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-TweenGroup::TweenGroup(uint8 _ID)
+TweenGroup::TweenGroup(TweenGroupID _ID)
 : m_isPaused(false)
 , m_dtScale(1.0f)
 , m_ID(_ID)
@@ -68,7 +68,7 @@ bool TweenGroup::ContainsTarget(ITweenable* _target) const
 }
 
 //--------------------------------------------------------------------------------
-bool TweenGroup::ContainsTarget(ITweenable* _target, int _type) const
+bool TweenGroup::ContainsTarget(ITweenable* _target, TweenType _type) const
 {
 	std::list<BaseTween*>::const_iterator it = m_tweens.begin();
 	while(it != m_tweens.end())
@@ -119,7 +119,7 @@ void TweenGroup::KillTarget(ITweenable* _target)
 	}
 }
 //--------------------------------------------------------------------------------
-void TweenGroup::KillTarget(ITweenable* _target, int _type)
+void TweenGroup::KillTarget(ITweenable* _target, TweenType _type)
 {
 	std::list<BaseTween*>::iterator it = m_tweens.begin();
 	while(it != m_tweens.end())

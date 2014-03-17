@@ -76,7 +76,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SRC\Tween\BaseTween.cpp" />
-    <ClCompile Include="SRC\Tween\Manager.cpp" />
+    <ClCompile Include="SRC\Tween\TweenManager.cpp" />
     <ClCompile Include="SRC\Tween\TweenGroup.cpp" />
     <ClCompile Include="SRC\Tween\Timeline.cpp" />
     <ClCompile Include="SRC\Tween\Tween.cpp" />
@@ -85,7 +85,7 @@
     <ClInclude Include="SRC\Tween\BaseTween.h" />
     <ClInclude Include="SRC\Tween\Easing.h" />
     <ClInclude Include="SRC\Tween\Path.h" />
-    <ClInclude Include="SRC\Tween\Manager.h" />
+    <ClInclude Include="SRC\Tween\TweenManager.h" />
     <ClInclude Include="SRC\Tween\Tools\BitField.h" />
     <ClInclude Include="SRC\Tween\Tools\Pool.h" />
     <ClInclude Include="SRC\Tween\TweenGroup.h" />
@@ -94,7 +94,7 @@
     <ClInclude Include="SRC\Tween\Tween.h" />
     <ClInclude Include="SRC\Tween\ITweenable.h" />
     <ClInclude Include="SRC\Tween\ITweenListener.h" />
-    <ClInclude Include="SRC\Tween\TweenTypeDefs.h" />
+    <ClInclude Include="SRC\Tween\TweenDefines.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

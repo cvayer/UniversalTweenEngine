@@ -15,35 +15,11 @@ public :
 	cMyTweenListener() {}
 	virtual ~cMyTweenListener() {}
 
-	virtual void OnEvent(EEventType _eType, int _iTweenID)
+	virtual void OnEvent(Tween::ETweenEventType _eType, Tween::TweenListenerID _iTweenID)
 	{
 		printf("OnEvent ID = %d\n", _iTweenID);
-		switch(_eType)
-		{
-		case eBegin: 
-			printf("Event : eBegin\n");
-			break;
-		case eStart: 
-			printf("Event : eStart\n");
-			break;
-		case eEnd: 
-			printf("Event : eEnd\n");
-			break;
-		case eComplete: 
-			printf("Event : eComplete\n");
-			break;
-		case eBackStart: 
-			printf("Event : eBackStart\n");
-			break;
-		case eBackEnd: 
-			printf("Event : eBackEnd\n");
-			break;
-		case eBackComplete: 
-			printf("Event : eBackComplete\n");
-			break;
-		default : 
-			break;
-		}
+        const char* name = Tween::ITweenListener::GetTweenEventTypeName(_eType);
+        printf("Event : %s\n", name);
 	}
 };
 

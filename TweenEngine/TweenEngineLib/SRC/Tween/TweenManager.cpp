@@ -1,5 +1,5 @@
 #include <stdafx.h>
-#include "Manager.h"
+#include "TweenManager.h"
 #include "BaseTween.h"
 #include "TweenGroup.h"
 
@@ -7,18 +7,18 @@ namespace Tween
 {
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
-// Manager
+// TweenManager
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 
-Manager::Manager()
+TweenManager::TweenManager()
 : m_isPaused(false)
 {
 
 }
 
 //--------------------------------------------------------------------------------
-Manager::~Manager()
+TweenManager::~TweenManager()
 {
 	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
@@ -30,7 +30,7 @@ Manager::~Manager()
 }
 
 //--------------------------------------------------------------------------------
-void Manager::Register(BaseTween* _tween, uint8 _groupID /* = DEFAULT_GROUP_ID */)
+void TweenManager::Register(BaseTween* _tween, TweenGroupID _groupID /* = DEFAULT_GROUP_ID */)
 {
 	TweenGroup* group = GetGroupByID(_groupID);
 
@@ -53,7 +53,7 @@ void Manager::Register(BaseTween* _tween, uint8 _groupID /* = DEFAULT_GROUP_ID *
 }
 
 //--------------------------------------------------------------------------------
-TweenGroup* Manager::GetGroupByID(uint8 _groupID) const
+TweenGroup* TweenManager::GetGroupByID(TweenGroupID _groupID) const
 {
 	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
@@ -67,14 +67,14 @@ TweenGroup* Manager::GetGroupByID(uint8 _groupID) const
 }
 
 //--------------------------------------------------------------------------------
-TweenGroup* Manager::GetGroupByIndex(uint32 _index) const
+TweenGroup* TweenManager::GetGroupByIndex(uint32 _index) const
 {
 	return m_tweenGroups.at(_index);
 }
 
 
 //--------------------------------------------------------------------------------
-bool Manager::ContainsTarget(ITweenable* _target, uint8 _groupID /*= MAX_GROUP_ID*/) const
+bool TweenManager::ContainsTarget(ITweenable* _target, TweenGroupID _groupID /*= MAX_GROUP_ID*/) const
 {
 	if(_groupID == MAX_GROUP_ID)
 	{
@@ -100,7 +100,7 @@ bool Manager::ContainsTarget(ITweenable* _target, uint8 _groupID /*= MAX_GROUP_I
 }
 
 //--------------------------------------------------------------------------------
-bool Manager::ContainsTarget(ITweenable* _target, int _type, uint8 _groupID /*= MAX_GROUP_ID*/) const
+bool TweenManager::ContainsTarget(ITweenable* _target, TweenType _type, TweenGroupID _groupID /*= MAX_GROUP_ID*/) const
 {
 	if(_groupID == MAX_GROUP_ID)
 	{
@@ -124,7 +124,7 @@ bool Manager::ContainsTarget(ITweenable* _target, int _type, uint8 _groupID /*= 
 	return false;
 }
 //--------------------------------------------------------------------------------
-void Manager::KillAll()
+void TweenManager::KillAll()
 {
 	for(size_t i = 0; i < m_tweenGroups.size(); ++i)
 	{
@@ -133,7 +133,7 @@ void Manager::KillAll()
 	}
 }
 //--------------------------------------------------------------------------------
-void Manager::KillTarget(ITweenable* _target, uint8 _groupID /*= MAX_GROUP_ID*/)
+void TweenManager::KillTarget(ITweenable* _target, TweenGroupID _groupID /*= MAX_GROUP_ID*/)
 {
 	if(_groupID == MAX_GROUP_ID)
 	{
@@ -153,7 +153,7 @@ void Manager::KillTarget(ITweenable* _target, uint8 _groupID /*= MAX_GROUP_ID*/)
 	}
 }
 //--------------------------------------------------------------------------------
-void Manager::KillTarget(ITweenable* _target, int _type, uint8 _groupID /*= MAX_GROUP_ID*/)
+void TweenManager::KillTarget(ITweenable* _target, TweenType _type, TweenGroupID _groupID /*= MAX_GROUP_ID*/)
 {
 	if(_groupID == MAX_GROUP_ID)
 	{
@@ -174,7 +174,7 @@ void Manager::KillTarget(ITweenable* _target, int _type, uint8 _groupID /*= MAX_
 }
 
 //--------------------------------------------------------------------------------
-void Manager::SetDtScale(float _scale, uint8 _groupID /*= MAX_GROUP_ID*/)
+void TweenManager::SetDtScale(float _scale, TweenGroupID _groupID /*= MAX_GROUP_ID*/)
 {
 	if(_groupID == MAX_GROUP_ID)
 	{
@@ -195,7 +195,7 @@ void Manager::SetDtScale(float _scale, uint8 _groupID /*= MAX_GROUP_ID*/)
 }
 
 //--------------------------------------------------------------------------------
-void Manager::Pause(uint8 _groupID /*= MAX_GROUP_ID*/)	
+void TweenManager::Pause(TweenGroupID _groupID /*= MAX_GROUP_ID*/)	
 { 
     if(_groupID == MAX_GROUP_ID)
     {
@@ -212,7 +212,7 @@ void Manager::Pause(uint8 _groupID /*= MAX_GROUP_ID*/)
 }
 
 //--------------------------------------------------------------------------------
-void Manager::Resume(uint8 _groupID /*= MAX_GROUP_ID*/)
+void TweenManager::Resume(TweenGroupID _groupID /*= MAX_GROUP_ID*/)
 { 
     if(_groupID == MAX_GROUP_ID)
     {
@@ -229,7 +229,7 @@ void Manager::Resume(uint8 _groupID /*= MAX_GROUP_ID*/)
 }
 
 //--------------------------------------------------------------------------------
-void Manager::Update(float _dt)
+void TweenManager::Update(float _dt)
 {
 	if(m_isPaused)
 		return;

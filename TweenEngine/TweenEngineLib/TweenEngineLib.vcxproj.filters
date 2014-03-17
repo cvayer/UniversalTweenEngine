@@ -48,9 +48,6 @@
     <ClCompile Include="SRC\Tween\BaseTween.cpp">
       <Filter>Source Files\Tween\Base</Filter>
     </ClCompile>
-    <ClCompile Include="SRC\Tween\Manager.cpp">
-      <Filter>Source Files\Tween\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="SRC\Tween\TweenGroup.cpp">
       <Filter>Source Files\Tween\Manager</Filter>
     </ClCompile>
@@ -66,13 +63,13 @@
     <ClCompile Include="SRC\Tween\Path.cpp">
       <Filter>Source Files\Paths</Filter>
     </ClCompile>
+    <ClCompile Include="SRC\Tween\TweenManager.cpp">
+      <Filter>Source Files\Tween\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SRC\Tween\BaseTween.h">
       <Filter>Source Files\Tween\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="SRC\Tween\Manager.h">
-      <Filter>Source Files\Tween\Manager</Filter>
     </ClInclude>
     <ClInclude Include="SRC\Tween\TweenGroup.h">
       <Filter>Source Files\Tween\Manager</Filter>
@@ -104,14 +101,17 @@
     <ClInclude Include="SRC\Tween\Tools\Pool.h">
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="SRC\Tween\TweenTypeDefs.h">
-      <Filter>Source Files\Tween</Filter>
-    </ClInclude>
     <ClInclude Include="SRC\Tween\Easing.h">
       <Filter>Source Files\Easing</Filter>
     </ClInclude>
     <ClInclude Include="SRC\Tween\Path.h">
       <Filter>Source Files\Paths</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\TweenManager.h">
+      <Filter>Source Files\Tween\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Tween\TweenDefines.h">
+      <Filter>Source Files\Tween</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

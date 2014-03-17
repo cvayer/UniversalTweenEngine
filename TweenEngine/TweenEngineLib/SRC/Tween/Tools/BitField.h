@@ -1,7 +1,7 @@
 #ifndef __TWEENBITFIELD__H__
 #define __TWEENBITFIELD__H__
 
-#include "TweenTypeDefs.h"
+#include "TweenDefines.h"
 
 namespace Tween
 {

@@ -7,7 +7,7 @@
 namespace Tween
 {
 class ITweenable;
-class Manager;
+class TweenManager;
 
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ class BaseTween
 {
 public : 
 	friend class TweenGroup;
-	friend class Manager;
+	friend class TweenManager;
 	friend class Timeline;
 
             BaseTween();
@@ -68,19 +68,19 @@ protected :
 
 			void		ForceToStart();
 			void		ForceToEnd(float _time);
-			void		CallCallback(ITweenListener::EEventType _type);
+			void		CallCallback(ETweenEventType _type);
 
 
 	virtual void		OnInitialize	()																	{}
 	virtual void		OnUpdate		(int _step, int _lastStep, bool _isIterationStep, float _dt)	    {}
 	virtual	void		OnBuild()                                                                           {}
 	virtual	void		OnStart();
-			void		OnStart(Manager* _manager);
-			void		OnStart(Manager* _manager, uint8 _groupID);
+			void		OnStart(TweenManager* _manager);
+			void		OnStart(TweenManager* _manager, uint8 _groupID);
 			void		OnDelay(float _delay);
 			void		OnRepeat(int _count, float _delay, bool _isYoyo = false);
 
-			void		OnSetListener(ITweenListener* _listener, int _ID = -1, int _triggers = ITweenListener::eComplete);
+			void		OnSetListener(ITweenListener* _listener, TweenListenerID _ID = InvalidTweenListenerID, TweenListenerFlags _triggers = eTweenComplete);
 
 private : 
 			void		Initialize();
@@ -95,11 +95,11 @@ private :
 
 
 private : 
-	ITweenListener* m_listener;
-	int				m_listenerTriggers;
-	int				m_listenerID;
-	int				m_step;
-	int				m_repeatCount;
+	ITweenListener*     m_listener;
+	TweenListenerFlags	m_listenerFlags;
+	TweenListenerID     m_listenerID;
+	int				    m_step;
+	int				    m_repeatCount;
 
 protected : 
 	float			m_delay;
@@ -149,34 +149,34 @@ public :
         return (T*)this;
     }
 
-    T*	Start(Manager* _pManager)
+    T*	Start(TweenManager* _manager)
     {
-        OnStart(_pManager);
+        OnStart(_manager);
         return (T*)this;
     }
 
-    T*	Start(Manager* _pManager, uint8 _GroupID)
+    T*	Start(TweenManager* _manager, TweenGroupID _groupID)
     {
-        OnStart(_pManager, _GroupID);
+        OnStart(_manager, _groupID);
         return (T*)this;
     }
 
-    T*	Delay(float _fDelay)
+    T*	Delay(float _delay)
     {
-        OnDelay(_fDelay);
+        OnDelay(_delay);
         return (T*)this;
     }
 
 
-    T*	Repeat(int _Count, float _fDelay, bool _bYoyo = false)
+    T*	Repeat(int _count, float _delay, bool _isYoyo = false)
     {
-        OnRepeat(_Count, _fDelay, _bYoyo);
+        OnRepeat(_count, _delay, _isYoyo);
         return (T*)this;
     }
 
-    T*	SetListener(ITweenListener* _pListener, int _iID = -1, int _iTriggers = ITweenListener::eComplete)
+    T*	SetListener(ITweenListener* _listener, TweenListenerID _iID = InvalidTweenListenerID, int _iTriggers = eTweenComplete)
     {
-        OnSetListener(_pListener, _iID, _iTriggers);
+        OnSetListener(_listener, _iID, _iTriggers);
         return (T*)this;
     }
 };
